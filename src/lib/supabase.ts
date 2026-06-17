@@ -44,12 +44,12 @@ const DEFAULT_OUTREACHES: Outreach[] = [
   {
     id: '1',
     created_at: new Date('2025-10-12').toISOString(),
-    title: 'Lagos Orphanage Support Outreach',
+    title: 'Lagos State Orphanage Outreach',
     description: 'Delivered food boxes, toiletries, and educational books to over 60 children at the Hope Center in Yaba.',
     location: 'Yaba, Lagos State',
     date: '2025-10-12',
     people_supported: 65,
-    image_url: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=600&q=80',
+    image_url: '/outreach-1.svg',
   },
   {
     id: '2',

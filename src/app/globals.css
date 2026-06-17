@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fcfbf8; /* brand-paper */
-  --foreground: #111827; /* brand-ink */
-  --primary: #006644; /* brand-primary */
+  --background: #fcfcff;
+  --foreground: #0c1954; /* Deep navy text */
+  --primary: #1b38ba; /* Vibrant brand blue */
   --primary-foreground: #ffffff;
-  --secondary: #f5f6f3; /* brand-secondary */
-  --secondary-foreground: #111827;
-  --brand-yellow: #fabc09;
-  --brand-green: #10b981;
-  --brand-ink: #111827;
-  --brand-paper: #fcfbf8;
-  --border: rgba(17, 24, 39, 0.1);
-  --muted: #6b7280;
-  --muted-foreground: #4b5563;
+  --secondary: #e1e6ff; /* Soft blue neutral */
+  --secondary-foreground: #0c1954;
+  --brand-yellow: #fada17; /* Sunny gold accent */
+  --brand-green: #38cb89; /* Active positive green */
+  --brand-ink: #0b164a; /* Midnight navy for footers/headings */
+  --brand-paper: #fcfcff;
+  --border: rgba(27, 56, 186, 0.12);
+  --muted: #4e5a94;
+  --muted-foreground: #6c7bb4;
   --card: #ffffff;
-  --card-foreground: #111827;
+  --card-foreground: #0c1954;
 }
 
 @theme {
@@ -45,16 +45,56 @@ body {
   font-family: var(--font-sans);
 }
 
-/* Micro-animations and polish */
+/* Premium Out-of-this-world Styles */
+
+/* Decorative background grid line patterns */
+.grid-mesh {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(27, 56, 186, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 56, 186, 0.04) 1px, transparent 1px);
+}
+
+/* Glassmorphism card layouts */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(27, 56, 186, 0.08);
+}
+
+.glass-card-dark {
+  background: rgba(11, 22, 74, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Text linear gradients */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #1b38ba 0%, #0c1954 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fada17 0%, #ff8c45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover transitions */
 .transition-all-custom {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.32, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.32, 1);
 }
 
-.hover-lift {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.32, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.32, 1);
+.hover-glow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.32, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.32, 1);
 }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 20px -8px rgba(17, 24, 39, 0.08);
+.hover-glow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(27, 56, 186, 0.15);
 }

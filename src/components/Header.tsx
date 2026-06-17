@@ -24,9 +24,7 @@ export default function Header() {
           href="/"
           className="flex items-center gap-2 font-display text-base font-bold tracking-tight text-foreground transition duration-200 active:scale-95"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground">
-            <FiHeart className="h-4 w-4 fill-current" />
-          </span>
+          <img src="/mllf-logo.svg" alt="MLLF Logo" className="h-10 w-10 object-contain rounded-full shadow-sm" />
           <span className="leading-tight">
             Maryann's
             <span className="block text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground">

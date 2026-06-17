@@ -9,9 +9,7 @@ export default function Footer() {
         {/* Foundation Info */}
         <div className="space-y-4">
           <div className="flex items-center gap-2 font-display text-lg font-bold">
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground">
-              <FiHeart className="h-4 w-4 fill-current" />
-            </span>
+            <img src="/mllf-logo.svg" alt="MLLF Logo" className="h-10 w-10 object-contain bg-white rounded-full p-1" />
             Maryann's Love and Light Foundation
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/70">
