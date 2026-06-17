@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   title: "Maryann's Love & Light Foundation",
   description: "One act of love. A lifetime of light. We show up for the forgotten — with food, school fees, books and care. No agenda. No middlemen.",
   authors: [{ name: "Maryann's Love & Light Foundation" }],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     type: "website",
     siteName: "Maryann's Love & Light Foundation",
