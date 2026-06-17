@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Heart, Menu, X } from "lucide-react";
+import { FiHeart, FiMenu, FiX } from "react-icons/fi";
 
 export default function Header() {
   const pathname = usePathname();
@@ -25,7 +25,7 @@ export default function Header() {
           className="flex items-center gap-2 font-display text-base font-bold tracking-tight text-foreground transition duration-200 active:scale-95"
         >
           <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground">
-            <Heart className="h-4 w-4 fill-current" />
+            <FiHeart className="h-4 w-4 fill-current" />
           </span>
           <span className="leading-tight">
             Maryann's
@@ -61,7 +61,7 @@ export default function Header() {
             href="/donate"
             className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-200 hover:bg-primary/95 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Heart className="h-3.5 w-3.5 fill-current" />
+            <FiHeart className="h-3.5 w-3.5 fill-current" />
             Donate
           </Link>
           
@@ -71,7 +71,7 @@ export default function Header() {
             className="grid h-10 w-10 place-items-center rounded-md text-foreground transition-all duration-200 hover:bg-secondary md:hidden"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {isOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
           </button>
         </div>
       </div>

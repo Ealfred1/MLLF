@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import supabase from "@/lib/supabase";
-import { Send, CheckCircle2, AlertCircle, CreditCard, Landmark, Coins } from "lucide-react";
+import { FiSend, FiCheckCircle, FiAlertCircle } from "react-icons/fi";
+import { FaLandmark, FaCoins } from "react-icons/fa";
 
 export default function Donate() {
   const [formData, setFormData] = useState({
@@ -93,7 +94,7 @@ export default function Donate() {
             {/* Account Card (Naira) */}
             <div className="rounded-3xl border border-border bg-white p-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 h-16 w-16 bg-primary/5 rounded-bl-3xl grid place-items-center text-primary">
-                <Landmark className="h-6 w-6" />
+                <FaLandmark className="h-6 w-6" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">
                 Local Currency (NGN)
@@ -117,7 +118,7 @@ export default function Donate() {
             {/* Account Card (USD/Domiciliary) */}
             <div className="rounded-3xl border border-border bg-white p-6 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 h-16 w-16 bg-primary/5 rounded-bl-3xl grid place-items-center text-primary">
-                <Coins className="h-6 w-6" />
+                <FaCoins className="h-6 w-6" />
               </div>
               <span className="text-[10px] font-bold uppercase tracking-wider text-brand-yellow bg-brand-yellow/15 px-2 py-0.5 rounded">
                 Domiciliary (USD)
@@ -149,7 +150,7 @@ export default function Donate() {
             {status === "success" ? (
               <div className="text-center py-10 space-y-4 animate-in fade-in duration-300">
                 <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-brand-green/15 text-brand-green">
-                  <CheckCircle2 className="h-10 w-10" />
+                  <FiCheckCircle className="h-10 w-10" />
                 </div>
                 <h3 className="font-display text-xl font-bold">Thank You! 💛</h3>
                 <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
@@ -168,7 +169,7 @@ export default function Donate() {
                 {/* Error Box */}
                 {status === "error" && (
                   <div className="flex items-center gap-2 rounded-xl bg-destructive/10 p-4 text-sm text-destructive border border-destructive/20 animate-in shake duration-300">
-                    <AlertCircle className="h-5 w-5 shrink-0" />
+                    <FiAlertCircle className="h-5 w-5 shrink-0" />
                     <span>{errorMessage}</span>
                   </div>
                 )}
@@ -270,7 +271,7 @@ export default function Donate() {
                     </span>
                   ) : (
                     <>
-                      <Send className="h-4 w-4" />
+                      <FiSend className="h-4 w-4" />
                       Report Donation
                     </>
                   )}

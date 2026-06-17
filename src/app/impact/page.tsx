@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import supabase, { Outreach } from "@/lib/supabase";
-import { Search, MapPin, Calendar, Heart, ShieldAlert } from "lucide-react";
+import { FiSearch, FiMapPin, FiCalendar, FiHeart, FiAlertTriangle } from "react-icons/fi";
 
 export default function Impact() {
   const [outreaches, setOutreaches] = useState<Outreach[]>([]);
@@ -120,7 +120,7 @@ export default function Impact() {
         <div className="mb-10 flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-2xl border border-border/80 shadow-sm">
           {/* Search Input */}
           <div className="relative w-full sm:max-w-xs">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search outreaches..."
@@ -170,7 +170,7 @@ export default function Impact() {
         ) : filteredOutreaches.length === 0 ? (
           /* Empty State */
           <div className="text-center py-20 border-2 border-dashed border-border rounded-3xl p-6">
-            <ShieldAlert className="mx-auto h-12 w-12 text-muted-foreground/60 mb-4" />
+            <FiAlertTriangle className="mx-auto h-12 w-12 text-muted-foreground/60 mb-4" />
             <h3 className="font-display text-lg font-bold">No outreaches found</h3>
             <p className="text-sm text-muted-foreground max-w-sm mx-auto mt-2 leading-relaxed">
               We couldn't find any outreach records matching "{searchTerm}" in the selected region.
@@ -192,7 +192,7 @@ export default function Impact() {
                     className="h-full w-full object-cover transition duration-300 hover:scale-105"
                   />
                   <div className="absolute top-3 right-3 rounded-full bg-primary/90 backdrop-blur-md px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1 shadow-sm">
-                    <Heart className="h-3 w-3 fill-current text-brand-yellow" />
+                    <FiHeart className="h-3 w-3 fill-current text-brand-yellow" />
                     {outreach.people_supported} supported
                   </div>
                 </div>
@@ -203,11 +203,11 @@ export default function Impact() {
                     {/* Meta Info Row */}
                     <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-muted-foreground font-semibold">
                       <span className="flex items-center gap-1">
-                        <MapPin className="h-3.5 w-3.5 text-primary" />
+                        <FiMapPin className="h-3.5 w-3.5 text-primary" />
                         {outreach.location}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="h-3.5 w-3.5" />
+                        <FiCalendar className="h-3.5 w-3.5" />
                         {new Date(outreach.date).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "short",

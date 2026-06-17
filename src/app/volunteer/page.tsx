@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import supabase from "@/lib/supabase";
-import { Send, CheckCircle2, AlertCircle, Heart } from "lucide-react";
+import { FiSend, FiCheckCircle, FiAlertCircle, FiHeart } from "react-icons/fi";
 
 export default function Volunteer() {
   const [formData, setFormData] = useState({
@@ -98,7 +98,7 @@ export default function Volunteer() {
             <div className="space-y-4">
               <div className="flex gap-3">
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                  <CheckCircle2 className="h-4 w-4" />
+                  <FiCheckCircle className="h-4 w-4" />
                 </span>
                 <div>
                   <h4 className="text-sm font-bold">Direct Hands-on Impact</h4>
@@ -108,7 +108,7 @@ export default function Volunteer() {
 
               <div className="flex gap-3">
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                  <CheckCircle2 className="h-4 w-4" />
+                  <FiCheckCircle className="h-4 w-4" />
                 </span>
                 <div>
                   <h4 className="text-sm font-bold">Community of Kindness</h4>
@@ -118,7 +118,7 @@ export default function Volunteer() {
 
               <div className="flex gap-3">
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
-                  <CheckCircle2 className="h-4 w-4" />
+                  <FiCheckCircle className="h-4 w-4" />
                 </span>
                 <div>
                   <h4 className="text-sm font-bold">Flexible Engagement</h4>
@@ -129,7 +129,7 @@ export default function Volunteer() {
 
             <div className="rounded-2xl bg-secondary/50 p-5 border border-border/40">
               <h3 className="font-display text-sm font-bold flex items-center gap-1.5 text-primary">
-                <Heart className="h-4 w-4 fill-current text-brand-yellow" /> Note on Verification
+                <FiHeart className="h-4 w-4 fill-current text-brand-yellow" /> Note on Verification
               </h3>
               <p className="text-xs text-muted-foreground leading-relaxed mt-2">
                 After you submit your registration, our outreach coordinator will contact you via WhatsApp or Email within 48 hours to share upcoming outreach plans.
@@ -144,7 +144,7 @@ export default function Volunteer() {
             {status === "success" ? (
               <div className="text-center py-10 space-y-4 animate-in fade-in duration-300">
                 <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-brand-green/15 text-brand-green">
-                  <CheckCircle2 className="h-10 w-10" />
+                  <FiCheckCircle className="h-10 w-10" />
                 </div>
                 <h3 className="font-display text-xl font-bold">Application Received!</h3>
                 <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
@@ -164,7 +164,7 @@ export default function Volunteer() {
                 {/* Error Banner */}
                 {status === "error" && (
                   <div className="flex items-center gap-2 rounded-xl bg-destructive/10 p-4 text-sm text-destructive border border-destructive/20 animate-in shake duration-300">
-                    <AlertCircle className="h-5 w-5 shrink-0" />
+                    <FiAlertCircle className="h-5 w-5 shrink-0" />
                     <span>{errorMessage}</span>
                   </div>
                 )}
@@ -276,7 +276,7 @@ export default function Volunteer() {
                     </span>
                   ) : (
                     <>
-                      <Send className="h-4 w-4" />
+                      <FiSend className="h-4 w-4" />
                       Submit Application
                     </>
                   )}

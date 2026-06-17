@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Heart, ShieldCheck, FileCheck, Sparkles } from "lucide-react";
+import { FiArrowRight, FiHeart, FiShield, FiFileText } from "react-icons/fi";
+import { HiSparkles } from "react-icons/hi";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32 md:py-40">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur-md">
-            <Heart className="h-3.5 w-3.5 fill-current text-brand-yellow animate-pulse" /> Love in action — across Nigeria
+            <FiHeart className="h-3.5 w-3.5 fill-current text-brand-yellow animate-pulse" /> Love in action — across Nigeria
           </span>
           
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl">
@@ -33,7 +34,7 @@ export default function Home() {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-yellow px-7 py-3.5 text-sm font-bold text-brand-ink shadow-lg shadow-black/10 transition-all duration-200 hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
             >
               Support Our Work
-              <ArrowRight className="h-4 w-4" />
+              <FiArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/impact"
@@ -50,7 +51,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6">
           <div className="flex items-start gap-3.5">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-secondary text-primary">
-              <Heart className="h-5 w-5" />
+              <FiHeart className="h-5 w-5" />
             </span>
             <div>
               <h3 className="font-display font-semibold text-foreground">Driven by Kindness</h3>
@@ -60,7 +61,7 @@ export default function Home() {
 
           <div className="flex items-start gap-3.5">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-secondary text-primary">
-              <ShieldCheck className="h-5 w-5" />
+              <FiShield className="h-5 w-5" />
             </span>
             <div>
               <h3 className="font-display font-semibold text-foreground">Orphanage Network</h3>
@@ -70,7 +71,7 @@ export default function Home() {
 
           <div className="flex items-start gap-3.5">
             <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-secondary text-primary">
-              <FileCheck className="h-5 w-5" />
+              <FiFileText className="h-5 w-5" />
             </span>
             <div>
               <h3 className="font-display font-semibold text-foreground">100% Documented</h3>
@@ -115,7 +116,7 @@ export default function Home() {
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-primary">
-              <Sparkles className="h-3.5 w-3.5 text-brand-yellow" /> Our Commitment
+              <HiSparkles className="h-3.5 w-3.5 text-brand-yellow" /> Our Commitment
             </span>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl md:text-5xl">
               We go where the need is — and we stay until it's met.
@@ -134,7 +135,7 @@ export default function Home() {
                 className="group inline-flex items-center gap-2 text-base font-bold text-primary transition duration-200 hover:text-primary/80"
               >
                 Want to make this possible? Donate Today
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                <FiArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>

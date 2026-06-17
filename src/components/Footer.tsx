@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Heart, Instagram, Mail, MessageCircle } from "lucide-react";
+import { FiHeart, FiInstagram, FiMail, FiMessageCircle } from "react-icons/fi";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="space-y-4">
           <div className="flex items-center gap-2 font-display text-lg font-bold">
             <span className="grid h-9 w-9 place-items-center rounded-full bg-primary text-primary-foreground">
-              <Heart className="h-4 w-4 fill-current" />
+              <FiHeart className="h-4 w-4 fill-current" />
             </span>
             Maryann's Love and Light Foundation
           </div>
@@ -62,7 +62,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-white/85 transition-colors duration-200 hover:text-brand-yellow"
               >
-                <Instagram className="h-4 w-4" />
+                <FiInstagram className="h-4 w-4" />
                 @maryanns_llf
               </a>
             </li>
@@ -71,7 +71,7 @@ export default function Footer() {
                 href="mailto:Maryannsloveandlight@gmail.com"
                 className="inline-flex items-center gap-2 text-white/85 transition-colors duration-200 hover:text-brand-yellow"
               >
-                <Mail className="h-4 w-4" />
+                <FiMail className="h-4 w-4" />
                 Maryannsloveandlight@gmail.com
               </a>
             </li>
@@ -82,7 +82,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 text-white/85 transition-colors duration-200 hover:text-brand-yellow"
               >
-                <MessageCircle className="h-4 w-4" />
+                <FiMessageCircle className="h-4 w-4" />
                 +234 706 347 2279
               </a>
             </li>

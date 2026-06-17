@@ -1,5 +1,5 @@
 import React from "react";
-import { User, Heart, Shield, Award, Users } from "lucide-react";
+import { FiUser } from "react-icons/fi";
 
 interface TeamMember {
   name: string;
@@ -76,7 +76,7 @@ export default function About() {
             <div className="aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-secondary shadow-sm">
               <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-secondary to-brand-yellow/20 text-center p-6">
                 <div className="grid h-16 w-16 place-items-center rounded-full bg-primary/10 text-primary">
-                  <User className="h-8 w-8" />
+                  <FiUser className="h-8 w-8" />
                 </div>
                 <h4 className="font-display font-semibold text-foreground">Founder & CEO</h4>
                 <p className="text-xs text-muted-foreground max-w-xs leading-normal">
@@ -166,7 +166,7 @@ export default function About() {
             <div key={index} className="rounded-2xl border border-border bg-card p-6 flex flex-col justify-between hover:shadow-sm transition-shadow">
               <div>
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-secondary text-primary/60">
-                  <User className="h-6 w-6" />
+                  <FiUser className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 font-display text-lg font-bold text-foreground">{member.name}</h3>
                 <p className="text-sm font-semibold text-primary">{member.role}</p>
