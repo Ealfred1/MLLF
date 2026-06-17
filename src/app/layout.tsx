@@ -1,32 +1,36 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import CursorLight from "@/components/CursorLight";
+import PageTransition from "@/components/PageTransition";
+import Lightbox from "@/components/Lightbox";
 
-const inter = Inter({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-display",
-  weight: ["600", "700", "800"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Maryann's Love and Light Foundation | Charity Outreach Nigeria",
-  description: "We show up for less privileged children and families across Nigeria — with food, school fees, books, and care. Join us or support our work today.",
-  keywords: "Nigerian charity, community outreach Nigeria, donate to charity Nigeria, volunteer Nigeria, food donation Nigeria, orphanage support Nigeria, Maryann foundation",
-  authors: [{ name: "Maryann's Love and Light Foundation" }],
+  title: "Maryann's Love & Light Foundation",
+  description: "One act of love. A lifetime of light. We show up for the forgotten — with food, school fees, books and care. No agenda. No middlemen.",
+  authors: [{ name: "Maryann's Love & Light Foundation" }],
   openGraph: {
     type: "website",
-    siteName: "Maryann's Love and Light Foundation",
-    title: "Maryann's Love and Light Foundation | Charity Outreach Nigeria",
-    description: "Small acts of kindness. Real change for real people across Nigeria.",
+    siteName: "Maryann's Love & Light Foundation",
+    title: "Maryann's Love & Light Foundation",
+    description: "One act of love. A lifetime of light.",
     url: "/",
   },
 };
@@ -39,12 +43,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakartaSans.variable} h-full antialiased`}
+      className={`${poppins.variable} ${roboto.variable}`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <Header />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Footer />
+      <body>
+        <SmoothScroll>
+          <CursorLight />
+          <PageTransition />
+          <Header />
+          {children}
+          <Footer />
+          <Lightbox />
+        </SmoothScroll>
       </body>
     </html>
   );

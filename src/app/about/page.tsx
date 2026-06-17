@@ -1,205 +1,314 @@
-import React from "react";
-import { FiUser } from "react-icons/fi";
-import { HiSparkles } from "react-icons/hi";
+"use client";
 
-interface TeamMember {
-  name: string;
-  role: string;
-  bio: string;
-  avatarUrl?: string;
-}
-
-const TEAM_MEMBERS: TeamMember[] = [
-  {
-    name: "Oluwaseun Maryann",
-    role: "Founder & CEO",
-    bio: "Launched the foundation to carry forward the legacy of compassion, action, and unconditional care inspired by her mother.",
-    avatarUrl: "/mllf-logo.svg", // Using foundation logo as founder brand avatar placeholder
-  },
-  {
-    name: "Emeka Okafor",
-    role: "Outreach & Operations Coordinator",
-    bio: "Manages logistical details, community selection, and on-site distribution safety for our active volunteer network.",
-  },
-  {
-    name: "Amina Yusuf",
-    role: "Financial Administrator",
-    bio: "Ensures full compliance and 100% accounting transparency for all received donations and outreach expenditures.",
-  },
-  {
-    name: "Comfort Udoh",
-    role: "Project Management Intern",
-    bio: "Supports daily project tracking, volunteer coordination, and outreach scheduling to ensure operations execute smoothly.",
-    avatarUrl: "/team-comfort-udoh.svg",
-  },
-  {
-    name: "Emmanuel Ayomide",
-    role: "Project Management Intern",
-    bio: "Assists in tracking outreach supplies, donor reports, and documentation compliance for our community events.",
-    avatarUrl: "/team-emmanuel-ayomide.svg",
-  },
-];
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import TransitionLink from "@/components/TransitionLink";
 
 export default function About() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      const reveals = containerRef.current?.querySelectorAll(".reveal");
+      reveals?.forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "none";
+      });
+      const heroes = containerRef.current?.querySelectorAll("[data-hero]");
+      heroes?.forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "none";
+      });
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // 1. Play Hero Intro Anim
+      const lines = containerRef.current?.querySelectorAll(".phero h1 .ln > span");
+      const heroes = containerRef.current?.querySelectorAll("[data-hero]");
+      const glows = containerRef.current?.querySelectorAll(".phero .glow");
+
+      if (lines && heroes) {
+        gsap.set(lines, { yPercent: 115 });
+        gsap.set(heroes, { opacity: 0, y: 16 });
+
+        gsap
+          .timeline()
+          .to(lines, { yPercent: 0, duration: 1.1, ease: "power4.out", stagger: 0.1 })
+          .to(heroes, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, "-=0.7");
+      }
+
+      if (glows && glows.length > 0) {
+        gsap.from(glows, { opacity: 0, scale: 0.6, duration: 1.6, ease: "power2.out" });
+      }
+
+      // 2. Play Scroll Reveals
+      const reveals = containerRef.current?.querySelectorAll(".reveal");
+      reveals?.forEach((el) => {
+        gsap.set(el, { opacity: 0, y: 26 });
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+          },
+        });
+      });
+
+      // 3. Play Parallax Glows
+      const parallaxGlows = containerRef.current?.querySelectorAll("[data-par]");
+      parallaxGlows?.forEach((el) => {
+        const phero = el.closest(".phero");
+        if (!phero) return;
+        const speed = parseFloat((el as HTMLElement).dataset.par || "0");
+        gsap.to(el, {
+          yPercent: speed * 100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: phero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="flex flex-col bg-background text-foreground overflow-hidden">
-      {/* Page Hero */}
-      <section className="relative bg-gradient-to-br from-brand-ink via-[#0d1c6e] to-brand-ink text-primary-foreground py-20 md:py-28 grid-mesh">
-        <div className="pointer-events-none absolute inset-0 opacity-35" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-brand-yellow/20 blur-[100px]"></div>
-        </div>
-        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-yellow">
+    <main className="page active" id="about" ref={containerRef}>
+      <header className="phero">
+        <div className="glow g1" data-par="0.16"></div>
+        <div className="inner">
+          <span className="eyebrow" data-hero>
             About the foundation
           </span>
-          <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] sm:text-5xl md:text-6xl">
-            More Than Charity.<br />
-            <span className="text-brand-yellow">It's a Promise.</span>
+          <h1>
+            <span className="ln">
+              <span>More than charity.</span>
+            </span>
+            <span className="ln">
+              <span>
+                It's a <em>promise.</em>
+              </span>
+            </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-white/80 sm:text-lg leading-relaxed">
-            Maryann's Love and Light Foundation was born from a simple act of kindness — and a decision to do more. Today, we show up for the less privileged across Nigeria, one community at a time.
-          </p>
+          <div className="phero-bottom">
+            <p className="lead" data-hero>
+              Maryann's Love and Light Foundation was born from a single act of
+              kindness — and a decision to do more. Today we show up for the less
+              privileged across Nigeria, <b>one community at a time.</b>
+            </p>
+          </div>
+        </div>
+        <div className="scroll-hint">
+          <span>scroll</span>
+          <span className="l"></span>
+        </div>
+      </header>
+
+      <section className="sec">
+        <div className="wrap">
+          <span className="label reveal">Our story</span>
+          <h2 className="big reveal" style={{ marginTop: "14px" }}>
+            It started with <em>one little girl,</em> and a decision to do more.
+          </h2>
+          <div className="story-grid">
+            <div>
+              <p className="reveal">
+                During her industrial training in Lagos, our founder watched a
+                little girl beg for food on the streets every single day. She
+                gave what she could — food, money, whatever was on her.{" "}
+                <strong>But one day, something shifted.</strong>
+              </p>
+              <p className="reveal">
+                She realised she could do more — not for one child, but for the
+                many children, families and individuals across Nigeria who fall
+                through the cracks every day. She called her friends together.
+                They talked, they planned, they committed. From that circle of
+                willing hearts, the foundation was born.
+              </p>
+              <p className="reveal">
+                It is named for <strong>Maryann — the CEO's mother</strong> — a
+                woman whose strength, reliability and unconditional love became
+                the living definition of everything this foundation stands for.
+                Her name isn't a title. It's a standard we hold ourselves to every
+                day.
+              </p>
+            </div>
+            <div className="quote-card reveal">
+              <div
+                className="ph"
+                style={{ backgroundImage: 'url("/images/founder.jpg")' }}
+              ></div>
+              <div className="body">
+                <blockquote>
+                  "Life isn't changed in a day — but we can show them what
+                  unconditional love from a stranger looks like."
+                </blockquote>
+                <cite>— Founder &amp; CEO, Maryann's Love and Light Foundation</cite>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Our Story Grid */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
-          
-          <div className="space-y-6 text-base leading-relaxed text-foreground/80">
-            <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl">
-              Our Story
-            </h2>
-            <p>
-              During her industrial training in Lagos State, our founder watched a little girl beg for food on the streets every single day. She gave what she could — food, money, whatever she had on her. But one day, something shifted inside her.
-            </p>
-            <p>
-              She realised she could do more. Not just for one child — but for the many children, families, and individuals across Nigeria who fall through the cracks of society every day. She called her friends together. They talked, they planned, and they committed. And from that circle of willing hearts, Maryann's Love and Light Foundation was born.
-            </p>
-            <p>
-              The foundation is named in honour of Maryann — the CEO's mother — a woman whose strength, reliability, and unconditional love became the living definition of everything this foundation stands for. Her name is not just a title. It is a standard we hold ourselves to every day.
+      <section className="light-field">
+        <div className="lf-head">
+          <span className="label">Our mission</span>
+          <h2>
+            To show up — and to remind people they are <em>not forgotten.</em>
+          </h2>
+        </div>
+        <p
+          className="lf-note"
+          style={{
+            maxWidth: "60ch",
+            margin: "26px auto 0",
+            textTransform: "none",
+            letterSpacing: ".02em",
+            fontSize: "15px",
+            lineHeight: 1.6,
+            color: "rgba(234,241,255,.7)",
+          }}
+        >
+          Consistently, compassionately, practically — we give people not just
+          what they need today, but the dignity, support and care that says they
+          matter.
+        </p>
+      </section>
+
+      <section className="sec">
+        <div className="wrap">
+          <span className="label reveal">Core values</span>
+          <h2 className="big reveal" style={{ marginTop: "14px" }}>
+            Four things we <em>never</em> compromise on.
+          </h2>
+          <div className="values">
+            <div className="vcard reveal">
+              <div className="emo">💚</div>
+              <h3>Compassion</h3>
+              <p>We lead with empathy in everything we do.</p>
+            </div>
+            <div className="vcard reveal">
+              <div className="emo">🤝</div>
+              <h3>Community</h3>
+              <p>Change happens together, not alone.</p>
+            </div>
+            <div className="vcard reveal">
+              <div className="emo">✊</div>
+              <h3>Action</h3>
+              <p>We don't just talk about the problem — we show up.</p>
+            </div>
+            <div className="vcard reveal">
+              <div className="emo">🌟</div>
+              <h3>Dignity</h3>
+              <p>Every person we serve deserves respect and care.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="sec"
+        style={{ background: "var(--paper-2)", borderTop: "1px solid var(--line)" }}
+      >
+        <div className="wrap">
+          <div className="trust-grid">
+            <div>
+              <span className="label reveal">Why we exist</span>
+              <h2 className="big reveal" style={{ marginTop: "14px" }}>
+                Too many people are left behind. <em>We refuse to accept it.</em>
+              </h2>
+            </div>
+            <p className="reveal" style={{ color: "var(--ink-soft)", fontSize: "16.5px" }}>
+              Millions of Nigerians live without access to basic support, care
+              or community. Children go hungry. Families struggle in silence. We
+              exist because we believe ordinary people, working together with
+              extraordinary commitment, can change that.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="relative">
-            <div className="absolute -inset-1 rounded-3xl bg-brand-yellow/10 blur-lg transform rotate-2"></div>
-            
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-white shadow-md flex items-center justify-center p-6">
-              <div className="flex h-full w-full flex-col items-center justify-center gap-4 text-center">
-                <img 
-                  src="/mllf-logo.svg" 
-                  alt="MLLF Logo Symbol" 
-                  className="h-24 w-24 object-contain filter drop-shadow-sm" 
-                />
-                <h4 className="font-display font-bold text-foreground">Maryann's Love & Light</h4>
-                <p className="text-xs text-muted leading-relaxed max-w-xs">
-                  "Life isn't changed in a day, but we can show them what unconditional love from a stranger looks like."
+      <section className="sec">
+        <div className="wrap">
+          <span className="label reveal">Meet the team</span>
+          <h2 className="big reveal" style={{ marginTop: "14px" }}>
+            The hands behind <em>the work.</em>
+          </h2>
+          <p className="sub reveal">
+            Profiles coming soon — full bios appear here once we receive team details.
+          </p>
+          <div className="team">
+            <div className="tcard reveal">
+              <div
+                className="ph"
+                style={{ backgroundImage: 'url("/images/team-01.jpg")' }}
+              ></div>
+              <div className="meta">
+                <h3>Name pending</h3>
+                <div className="role">Role pending</div>
+                <p>
+                  A short biography will appear here once we receive team details.
                 </p>
               </div>
             </div>
-            <div className="absolute -bottom-4 -left-4 h-20 w-20 rounded-2xl bg-brand-green/20 -z-10 md:-left-6 md:h-24 md:w-24"></div>
-          </div>
-        </div>
-
-        {/* Quote Block */}
-        <blockquote className="mt-20 border-l-4 border-brand-yellow bg-secondary/40 py-8 pl-6 pr-4 sm:pl-10 rounded-r-2xl">
-          <p className="font-display text-2xl font-bold leading-snug text-foreground sm:text-3xl">
-            "Life isn't changed in a day, but we can show them what unconditional love from a stranger looks like."
-          </p>
-          <footer className="mt-4 text-xs font-extrabold uppercase tracking-wider text-primary">
-            — Founder & CEO, Maryann's Love and Light Foundation
-          </footer>
-        </blockquote>
-      </section>
-
-      {/* Mission Declaration */}
-      <section className="bg-brand-ink text-white py-20 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/25 via-transparent to-transparent opacity-30"></div>
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-yellow">
-            Our Mission
-          </span>
-          <p className="mt-6 font-display text-2xl font-bold italic leading-relaxed sm:text-3xl text-brand-paper">
-            "To show up — consistently, compassionately, and practically — for the less privileged communities of Nigeria. To give people not just what they need today, but the dignity, support, and care that reminds them they are not forgotten."
-          </p>
-        </div>
-      </section>
-
-      {/* Core Values Cards */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
-        <h2 className="text-center font-display text-3xl font-extrabold">Core Values</h2>
-        
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl p-6 glass-card hover-glow transition-all-custom">
-            <span className="text-3xl">💛</span>
-            <h3 className="mt-4 font-display text-lg font-bold">Compassion</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">We lead with empathy and active listening in everything we do.</p>
-          </div>
-
-          <div className="rounded-2xl p-6 glass-card hover-glow transition-all-custom">
-            <span className="text-3xl">🤝</span>
-            <h3 className="mt-4 font-display text-lg font-bold">Community</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">We believe sustainable change happens together, not in isolation.</p>
-          </div>
-
-          <div className="rounded-2xl p-6 glass-card hover-glow transition-all-custom">
-            <span className="text-3xl">✊</span>
-            <h3 className="mt-4 font-display text-lg font-bold">Action</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">We do not just analyze the problem — we actively show up to help.</p>
-          </div>
-
-          <div className="rounded-2xl p-6 glass-card hover-glow transition-all-custom">
-            <span className="text-3xl">🌟</span>
-            <h3 className="mt-4 font-display text-lg font-bold">Dignity</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">Every human being we support deserves respect, integrity, and honor.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Why We Exist */}
-      <section className="bg-secondary/20 py-20 border-y border-border/20 grid-mesh">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <h2 className="font-display text-3xl font-extrabold text-center">Why We Exist</h2>
-          <p className="mt-6 text-base leading-relaxed text-center text-foreground/80 sm:text-lg">
-            Millions of Nigerians live without access to basic support, care, or community. Children go hungry. Families struggle in silence. Communities are left behind. We exist because we believe that is not acceptable — and that ordinary people, working together with extraordinary commitment, can change it.
-          </p>
-        </div>
-      </section>
-
-      {/* Team Profiles Directory */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-24">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="font-display text-3xl font-extrabold">Meet the Team</h2>
-            <p className="mt-2 text-sm text-muted">The dedicated hearts driving MLLF's mission.</p>
-          </div>
-        </div>
-        
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM_MEMBERS.map((member, index) => (
-            <div key={index} className="rounded-[2rem] p-6 glass-card hover-glow transition-all-custom flex flex-col justify-between">
-              <div>
-                {/* Profile Photo Area */}
-                <div className="relative aspect-square w-full rounded-2xl bg-secondary overflow-hidden flex items-center justify-center border border-border/40 mb-4 shadow-inner">
-                  {member.avatarUrl ? (
-                    <img 
-                      src={member.avatarUrl} 
-                      alt={member.name} 
-                      className="h-full w-full object-contain p-2 hover:scale-105 transition duration-300"
-                    />
-                  ) : (
-                    <FiUser className="h-12 w-12 text-primary/40" />
-                  )}
-                </div>
-                
-                <h3 className="font-display text-lg font-bold text-foreground">{member.name}</h3>
-                <p className="text-xs font-bold uppercase tracking-wider text-primary mt-0.5">{member.role}</p>
-                <p className="mt-3 text-sm leading-relaxed text-muted">{member.bio}</p>
+            <div className="tcard reveal">
+              <div
+                className="ph"
+                style={{ backgroundImage: 'url("/images/team-02.jpg")' }}
+              ></div>
+              <div className="meta">
+                <h3>Name pending</h3>
+                <div className="role">Role pending</div>
+                <p>
+                  A short biography will appear here once we receive team details.
+                </p>
               </div>
             </div>
-          ))}
+            <div className="tcard reveal">
+              <div
+                className="ph"
+                style={{ backgroundImage: 'url("/images/team-03.jpg")' }}
+              ></div>
+              <div className="meta">
+                <h3>Name pending</h3>
+                <div className="role">Role pending</div>
+                <p>
+                  A short biography will appear here once we receive team details.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+
+      <section className="final">
+        <div className="final-glow"></div>
+        <h2 data-hero>
+          Be part of <em>the promise.</em>
+        </h2>
+        <p data-hero>Give your time, or fund the next outreach.</p>
+        <div className="actions" data-hero>
+          <TransitionLink
+            className="btn btn-solid"
+            data-magnet
+            href="/volunteer"
+          >
+            Volunteer <span className="arrow">→</span>
+          </TransitionLink>
+          <TransitionLink className="btn btn-ghost" data-magnet href="/donate">
+            Donate
+          </TransitionLink>
+        </div>
+      </section>
+    </main>
   );
 }

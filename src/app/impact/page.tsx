@@ -1,237 +1,313 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import supabase, { Outreach } from "@/lib/supabase";
-import { FiSearch, FiMapPin, FiCalendar, FiHeart, FiAlertTriangle } from "react-icons/fi";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import TransitionLink from "@/components/TransitionLink";
 
 export default function Impact() {
-  const [outreaches, setOutreaches] = useState<Outreach[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState("All");
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    async function fetchOutreaches() {
-      try {
-        setLoading(true);
-        const { data, error } = await supabase.from("outreaches").select("*");
-        if (error) {
-          throw new Error(error.message);
-        }
-        if (data) {
-          // Sort outreaches by date descending
-          const sorted = [...data].sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-          setOutreaches(sorted);
-        }
-      } catch (err) {
-        console.error("Error fetching outreaches:", err);
-      } finally {
-        setLoading(false);
-      }
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      const reveals = containerRef.current?.querySelectorAll(".reveal");
+      reveals?.forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "none";
+      });
+      const heroes = containerRef.current?.querySelectorAll("[data-hero]");
+      heroes?.forEach((el) => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "none";
+      });
+      const figures = containerRef.current?.querySelectorAll(".fig");
+      figures?.forEach((el) => {
+        const figureEl = el as HTMLElement;
+        const target = figureEl.dataset.count || "0";
+        const plus = figureEl.dataset.plus ? "+" : "";
+        figureEl.innerHTML = target + "<em>" + plus + "</em>";
+      });
+      return;
     }
 
-    fetchOutreaches();
+    const ctx = gsap.context(() => {
+      // 1. Play Hero Intro Anim
+      const lines = containerRef.current?.querySelectorAll(".phero h1 .ln > span");
+      const heroes = containerRef.current?.querySelectorAll("[data-hero]");
+      const glows = containerRef.current?.querySelectorAll(".phero .glow");
+
+      if (lines && heroes) {
+        gsap.set(lines, { yPercent: 115 });
+        gsap.set(heroes, { opacity: 0, y: 16 });
+
+        gsap
+          .timeline()
+          .to(lines, { yPercent: 0, duration: 1.1, ease: "power4.out", stagger: 0.1 })
+          .to(heroes, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 }, "-=0.7");
+      }
+
+      if (glows && glows.length > 0) {
+        gsap.from(glows, { opacity: 0, scale: 0.6, duration: 1.6, ease: "power2.out" });
+      }
+
+      // 2. Play Scroll Reveals
+      const reveals = containerRef.current?.querySelectorAll(".reveal");
+      reveals?.forEach((el) => {
+        gsap.set(el, { opacity: 0, y: 26 });
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          duration: 0.85,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 88%",
+          },
+        });
+      });
+
+      // 3. Play Parallax Glows
+      const parallaxGlows = containerRef.current?.querySelectorAll("[data-par]");
+      parallaxGlows?.forEach((el) => {
+        const phero = el.closest(".phero");
+        if (!phero) return;
+        const speed = parseFloat((el as HTMLElement).dataset.par || "0");
+        gsap.to(el, {
+          yPercent: speed * 100,
+          ease: "none",
+          scrollTrigger: {
+            trigger: phero,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+
+      // 4. Stats counters animation
+      const figures = containerRef.current?.querySelectorAll(".fig");
+      figures?.forEach((el) => {
+        const figureEl = el as HTMLElement;
+        const target = +(figureEl.dataset.count || 0);
+        const plus = figureEl.dataset.plus ? "+" : "";
+
+        gsap.to(
+          { v: 0 },
+          {
+            v: target,
+            duration: 1.7,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: figureEl,
+              start: "top 90%",
+              once: true,
+            },
+            onUpdate: function () {
+              figureEl.textContent = Math.round(this.targets()[0].v).toString();
+            },
+            onComplete: () => {
+              figureEl.innerHTML = target + "<em>" + plus + "</em>";
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
-  // Get unique locations for filtering
-  const locations = ["All", ...Array.from(new Set(outreaches.map((o) => {
-    const parts = o.location.split(",");
-    return parts[parts.length - 1].trim();
-  })))];
-
-  // Filtering logic
-  const filteredOutreaches = outreaches.filter((outreach) => {
-    const matchesSearch =
-      outreach.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      outreach.description.toLowerCase().includes(searchTerm.toLowerCase());
-    
-    const matchesLocation =
-      selectedLocation === "All" ||
-      outreach.location.toLowerCase().includes(selectedLocation.toLowerCase());
-
-    return matchesSearch && matchesLocation;
-  });
-
-  // Aggregated Stats
-  const totalPeopleSupported = outreaches.reduce((sum, o) => sum + (o.people_supported || 0), 0);
-  const totalOutreaches = outreaches.length;
-  const uniqueStateCount = new Set(
-    outreaches.map((o) => {
-      const parts = o.location.split(",");
-      return parts[parts.length - 1].trim();
-    })
-  ).size;
-
   return (
-    <div className="flex flex-col bg-background text-foreground overflow-hidden">
-      {/* Hero Header */}
-      <section className="relative bg-gradient-to-br from-brand-ink via-[#0d1c6e] to-brand-ink text-primary-foreground py-16 sm:py-20 grid-mesh">
-        <div className="pointer-events-none absolute inset-0 opacity-35" aria-hidden="true">
-          <div className="absolute top-1/4 left-1/4 h-80 w-80 rounded-full bg-brand-yellow/15 blur-[100px]"></div>
-        </div>
-        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-brand-yellow">
-            Documented Action
+    <main className="page active" id="impact" ref={containerRef}>
+      <header className="phero">
+        <div className="glow g1" data-par="0.16"></div>
+        <div className="glow g2" data-par="-0.1"></div>
+        <div className="inner">
+          <span className="eyebrow" data-hero>
+            Stories of change
           </span>
-          <h1 className="mt-4 font-display text-4xl font-extrabold sm:text-5xl">
-            Our Impact. <span className="text-brand-yellow">Real Stories.</span>
+          <h1>
+            <span className="ln">
+              <span>Behind every face</span>
+            </span>
+            <span className="ln">
+              <span>
+                is a story <em>worth telling.</em>
+              </span>
+            </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base text-white/80 leading-relaxed sm:text-lg">
-            Every donation has a face, a family, and a story. We keep a documented timeline of our community outreaches so you can see the light you're helping us create.
-          </p>
-        </div>
-      </section>
-
-      {/* Aggregate Stats Strip */}
-      <section className="border-b border-border bg-white py-10 shadow-sm">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <div className="grid grid-cols-3 gap-6 text-center">
-            <div className="border-r border-border/60">
-              <p className="text-3xl sm:text-5xl font-extrabold text-primary tracking-tight">
-                {loading ? "..." : totalOutreaches}
-              </p>
-              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-2">
-                Outreaches Completed
-              </p>
-            </div>
-            <div className="border-r border-border/60">
-              <p className="text-3xl sm:text-5xl font-extrabold text-primary tracking-tight">
-                {loading ? "..." : totalPeopleSupported.toLocaleString()}
-              </p>
-              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-2">
-                Lives Impacted
-              </p>
-            </div>
-            <div>
-              <p className="text-3xl sm:text-5xl font-extrabold text-primary tracking-tight">
-                {loading ? "..." : uniqueStateCount}
-              </p>
-              <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-2">
-                States Reached
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Timeline Section */}
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 w-full relative">
-        {/* Filters and Search Bar */}
-        <div className="mb-10 flex flex-col sm:flex-row gap-4 justify-between items-center bg-white p-4 rounded-[1.5rem] border border-border/80 shadow-sm">
-          {/* Search Input */}
-          <div className="relative w-full sm:max-w-xs">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
-            <input
-              type="text"
-              placeholder="Search outreaches..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full rounded-2xl border border-border bg-transparent pl-11 pr-4 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-1 focus:ring-primary/20"
-            />
-          </div>
-
-          {/* Location Filters */}
-          <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto justify-start sm:justify-end">
-            <span className="text-xs font-bold text-muted mr-1 hidden md:inline">Filter Region:</span>
-            {locations.map((loc) => (
-              <button
-                key={loc}
-                onClick={() => setSelectedLocation(loc)}
-                className={`rounded-full px-4.5 py-2 text-xs font-bold transition-all duration-200 ${
-                  selectedLocation === loc
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "bg-secondary text-foreground/70 hover:bg-secondary/80 hover:text-foreground"
-                }`}
-              >
-                {loc}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Outreach List Grid */}
-        {loading ? (
-          /* Loading Skeletons */
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="rounded-[2rem] border border-border bg-card overflow-hidden animate-pulse">
-                <div className="aspect-video w-full bg-secondary"></div>
-                <div className="p-6 space-y-4">
-                  <div className="h-4 w-1/3 bg-secondary rounded"></div>
-                  <div className="h-6 w-3/4 bg-secondary rounded"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 w-full bg-secondary rounded"></div>
-                    <div className="h-4 w-5/6 bg-secondary rounded"></div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : filteredOutreaches.length === 0 ? (
-          /* Empty State */
-          <div className="text-center py-20 border-2 border-dashed border-border rounded-[2rem] p-6">
-            <FiAlertTriangle className="mx-auto h-12 w-12 text-muted/65 mb-4" />
-            <h3 className="font-display text-lg font-bold">No outreaches found</h3>
-            <p className="text-sm text-muted max-w-sm mx-auto mt-2 leading-relaxed">
-              We couldn't find any outreach records matching "{searchTerm}" in the selected region.
+          <div className="phero-bottom">
+            <p className="lead" data-hero>
+              We show up for the forgotten — with food, school fees, books and care.
+              These are real people whose lives were touched by a moment of
+              kindness. <b>This is why we show up.</b>
             </p>
           </div>
-        ) : (
-          /* Main Results Grid */
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredOutreaches.map((outreach) => (
-              <article
-                key={outreach.id}
-                className="flex flex-col rounded-[2rem] border border-border bg-card overflow-hidden hover-lift transition-all-custom"
-              >
-                {/* Photo Header */}
-                <div className="aspect-video w-full relative bg-secondary overflow-hidden">
-                  <img
-                    src={outreach.image_url}
-                    alt={outreach.title}
-                    className="h-full w-full object-cover transition duration-300 hover:scale-105"
-                  />
-                  <div className="absolute top-4 right-4 rounded-full bg-primary/95 backdrop-blur-md px-3.5 py-1.5 text-[10px] font-extrabold text-white uppercase tracking-wider flex items-center gap-1 shadow-md border border-white/10">
-                    <FiHeart className="h-3.5 w-3.5 fill-current text-brand-yellow animate-pulse" />
-                    {outreach.people_supported} supported
-                  </div>
-                </div>
+        </div>
+        <div className="scroll-hint">
+          <span>scroll</span>
+          <span className="l"></span>
+        </div>
+      </header>
 
-                {/* Details Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div className="space-y-3">
-                    {/* Meta Info Row */}
-                    <div className="flex flex-wrap items-center gap-y-1 gap-x-3 text-xs text-muted font-bold">
-                      <span className="flex items-center gap-1">
-                        <FiMapPin className="h-3.5 w-3.5 text-primary" />
-                        {outreach.location}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <FiCalendar className="h-3.5 w-3.5" />
-                        {new Date(outreach.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "short",
-                          day: "numeric",
-                        })}
-                      </span>
-                    </div>
-
-                    <h3 className="font-display text-lg font-extrabold text-foreground leading-snug">
-                      {outreach.title}
-                    </h3>
-
-                    <p className="text-sm leading-relaxed text-muted font-normal">
-                      {outreach.description}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            ))}
+      <section className="light-field">
+        <div className="lf-head">
+          <span className="label">By the numbers</span>
+          <h2>
+            Small team. <em>Real reach.</em>
+          </h2>
+        </div>
+        <div className="stats">
+          <div className="stat">
+            <div className="fig" data-count="6">
+              0
+            </div>
+            <div className="cap">Communities reached</div>
           </div>
-        )}
+          <div className="stat">
+            <div className="fig" data-count="300" data-plus="1">
+              0
+            </div>
+            <div className="cap">People supported</div>
+          </div>
+          <div className="stat">
+            <div className="fig" data-count="30" data-plus="1">
+              0
+            </div>
+            <div className="cap">Volunteers mobilized</div>
+          </div>
+        </div>
       </section>
-    </div>
+
+      <section className="sec">
+        <div className="wrap">
+          <span className="label reveal">Stories from the field</span>
+
+          <div className="story reveal">
+            <div
+              className="story-media"
+              style={{ backgroundImage: 'url("/images/outreach-06.jpg")' }}
+            >
+              <span className="tag">Story 01 · Anambra State</span>
+            </div>
+            <div className="story-body">
+              <div className="st-label">Buying a day of rest</div>
+              <h3>More than the struggle: Mrs. Okafor</h3>
+              <p>
+                Mrs Okafor wakes before dawn every day to hawk on the streets of
+                Akwa LGA, feeding her children on whatever she can sell. When
+                our team met her mid-morning — already on her feet — a simple
+                conversation became something deeper.
+              </p>
+              <p>
+                That day we provided food and essentials for her, her children,
+                and other families nearby. For the first time in a long while
+                she didn't have to wonder about the next meal.{" "}
+                <strong>She told us she felt seen.</strong>
+              </p>
+            </div>
+          </div>
+
+          <div className="story reveal">
+            <div
+              className="story-media"
+              style={{ backgroundImage: 'url("/images/outreach-07.jpg")' }}
+            >
+              <span className="tag">Story 02 · Dec 2, 2023</span>
+            </div>
+            <div className="story-body">
+              <div className="st-label">The Give Back Project</div>
+              <h3>Feeding 100 souls</h3>
+              <p>
+                Our first major project set out with a simple goal: nourishment
+                for those facing the hardest times. By the end of the day we'd
+                fed nearly 100 people — children with eyes full of hope, adults
+                carrying on with remarkable strength.
+              </p>
+              <p>
+                We met people living with disabilities who continue with
+                extraordinary resilience. We don't just bring food — we bring
+                the message that no one is left behind.
+              </p>
+            </div>
+          </div>
+
+          <div className="story reveal">
+            <div
+              className="story-media"
+              style={{ backgroundImage: 'url("/images/outreach-08.jpg")' }}
+            >
+              <span className="tag">Story 03 · Lagos State</span>
+            </div>
+            <div className="story-body">
+              <div className="st-label">The beginning of a dream</div>
+              <h3>Our first charity event</h3>
+              <p>
+                Every great mission starts with a single step. Ours took us from
+                busy streets to the quiet halls of an orphanage in Lagos —
+                sharing food with people on the street, providing for children
+                who needed to know they weren't forgotten.
+              </p>
+              <p>
+                None of it would have been possible without our volunteers,
+                whose kindness lit up every smile. This was just the beginning.
+              </p>
+            </div>
+          </div>
+
+          <div className="story reveal">
+            <div
+              className="story-media"
+              style={{ backgroundImage: 'url("/images/outreach-09.jpg")' }}
+            >
+              <span className="tag">Story 04 · Orphanage Outreach</span>
+            </div>
+            <div className="story-body">
+              <div className="st-label">Books, bowls and belonging</div>
+              <h3>A day at the orphanage</h3>
+              <p>
+                We arrived with cartons of foodstuffs, textbooks, notebooks and
+                a team ready to stay. What began as a supply drop became
+                something more — children reading with volunteers, sharing
+                stories, laughing.
+              </p>
+              <p>
+                Beyond provisions, they received time, attention, and the
+                reminder that they're not invisible.{" "}
+                <strong>
+                  We came to give supplies. We left having given belonging.
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="final">
+        <div className="final-glow"></div>
+        <h2 data-hero>
+          See it all in <em>the gallery.</em>
+        </h2>
+        <p data-hero>
+          We document every outreach. Browse the photo wall — or help us write
+          the next story.
+        </p>
+        <div className="actions" data-hero>
+          <TransitionLink
+            className="btn btn-solid"
+            data-magnet
+            href="/gallery"
+          >
+            Open gallery <span className="arrow">→</span>
+          </TransitionLink>
+          <TransitionLink
+            className="btn btn-ghost"
+            data-magnet
+            href="/volunteer"
+          >
+            Volunteer
+          </TransitionLink>
+        </div>
+      </section>
+    </main>
   );
 }

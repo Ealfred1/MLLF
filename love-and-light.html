@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maryann's Love &amp; Light Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* brand greens */
+    --forest:#228B22; --lime:#32CD32; --sea:#2E8B57; --mint:#98FB98;
+    /* brand blues */
+    --sky:#87CEEB; --royal:#4169E1; --navy:#000080; --peacock:#1C39BB;
+    /* neutrals */
+    --paper:#F1F6F2; --paper-2:#E9F2EC; --paper-3:#FFFFFF;
+    --ink:#0B1F2A; --ink-soft:#4C6470; --ink-faint:#8AA0A8;
+    --line:rgba(11,31,42,.12); --line-2:rgba(11,31,42,.06);
+    --disp:"Poppins",system-ui,sans-serif; --body:"Roboto",system-ui,sans-serif;
+    --grad:linear-gradient(105deg,var(--forest),var(--royal));
+    --ph:url("https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTRljrPMCdX7Fweir-Hr_jTEXTvTt0KwnCrh7_3DdACNBGU-AbQsSn6aDZk6Qm9nNAOzMF3mfC5xxfCauxJmygRd685hJNnW53rw2SQI2ehF7LG5yiYj4Vxmw&usqp=CAc");
+    --photo:url("data:image/jpeg;base64,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");
+    --maxw:1280px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--body);font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
+  @media (hover:none){body{cursor:auto}}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,h4{font-family:var(--disp);font-weight:700;letter-spacing:-.02em;margin:0}
+  ::selection{background:var(--lime);color:var(--ink)}
+  img{display:block;max-width:100%}
+
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .cursor-light{position:fixed;top:0;left:0;width:720px;height:720px;margin:-360px 0 0 -360px;z-index:1;pointer-events:none;border-radius:50%;
+    background:radial-gradient(circle, rgba(135,206,235,.45) 0%, rgba(50,205,50,.14) 34%, rgba(65,105,225,0) 62%);mix-blend-mode:multiply;will-change:transform;opacity:0;transition:opacity .6s ease}
+  .cursor-dot{position:fixed;top:0;left:0;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;z-index:80;border-radius:50%;background:var(--forest);pointer-events:none;mix-blend-mode:difference;will-change:transform}
+  @media (hover:none){.cursor-light,.cursor-dot{display:none}}
+
+  .aperture{position:fixed;top:50%;left:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;z-index:90;pointer-events:none;
+    background:radial-gradient(circle at 40% 36%, var(--mint), var(--forest) 38%, var(--sea) 60%, var(--peacock) 88%);box-shadow:0 0 120px 30px rgba(34,139,34,.5);transform:scale(0);will-change:transform}
+  .aperture::after{content:"✦";position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.7);font-size:34px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(18px,4vw,52px)}
+  .brand{display:flex;align-items:center;gap:11px;cursor:none}
+  .brand .mark{width:30px;height:30px;border-radius:50%;flex:none;background:radial-gradient(circle at 32% 28%, var(--mint), var(--forest) 52%, var(--peacock));box-shadow:0 0 22px rgba(65,105,225,.45)}
+  .brand b{font-family:var(--disp);font-weight:600;font-size:15px;letter-spacing:-.01em;line-height:1.1;display:block}
+  .brand small{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{position:relative;color:var(--ink-soft);font-family:var(--disp);font-weight:500;font-size:14px;padding:8px 13px;border-radius:100px;transition:color .3s,background .3s}
+  .nav-links a.active{color:var(--ink)}
+  .nav-links a:not(.nav-cta):hover{color:var(--forest)}
+  .nav-links a.active:not(.nav-cta){background:rgba(34,139,34,.1)}
+  .nav-cta{background:var(--grad)!important;color:#fff!important;font-weight:600;padding:9px 18px!important;transition:filter .3s,transform .3s}
+  .nav-cta:hover{filter:brightness(1.08)}
+  @media (max-width:960px){.nav-links a:not(.nav-cta){display:none}}
+
+  .page{display:none}.page.active{display:block}
+  footer{display:block}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:clamp(18px,4vw,52px);padding-right:clamp(18px,4vw,52px)}
+  .eyebrow{font-family:var(--disp);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);display:inline-flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--forest)}
+
+  .btn{position:relative;display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:100px;font-family:var(--disp);font-weight:600;font-size:15px;cursor:none;transition:transform .25s cubic-bezier(.2,.7,.3,1),filter .25s;will-change:transform}
+  .btn-solid{background:var(--grad);color:#fff}
+  .btn-solid .arrow{transition:transform .3s}.btn-solid:hover .arrow{transform:translateX(4px)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink)}.btn-ghost:hover{border-color:var(--royal);color:var(--royal)}
+  .actions{display:flex;gap:13px;flex-wrap:wrap}
+
+  .phero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:0 clamp(18px,4vw,52px) clamp(40px,6vh,72px)}
+  .phero .glow{position:absolute;z-index:0;border-radius:50%;filter:blur(8px);pointer-events:none}
+  .g1{top:-22vh;right:-6vw;width:62vw;height:62vw;background:radial-gradient(circle, rgba(135,206,235,.85), rgba(65,105,225,.32) 44%, rgba(65,105,225,0) 72%)}
+  .g2{bottom:-30vh;left:-14vw;width:52vw;height:52vw;background:radial-gradient(circle, rgba(152,251,152,.7), rgba(46,139,87,0) 70%)}
+  .phero .inner{position:relative;z-index:3;width:100%;max-width:var(--maxw);margin:0 auto}
+  .phero h1{font-size:clamp(46px,8vw,118px);line-height:.98;letter-spacing:-.03em;margin:24px 0 0;max-width:15ch}
+  .phero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .phero .ln{display:block;overflow:hidden}.phero .ln>span{display:block;will-change:transform}
+  .phero-bottom{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px;margin-top:34px}
+  .phero .lead{max-width:48ch;color:var(--ink-soft);font-size:clamp(15px,1.5vw,18px)}
+  .phero .lead b{color:var(--ink);font-weight:600}
+  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:4;font-family:var(--disp);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-hint .l{width:1px;height:36px;background:linear-gradient(var(--forest),transparent);animation:drip 2.1s ease-in-out infinite}
+  @keyframes drip{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.01%{transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
+
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--paper-2)}
+  .mq-track{display:flex;white-space:nowrap;will-change:transform;animation:slide 30s linear infinite}
+  .mq-track span{font-family:var(--disp);font-weight:600;font-size:clamp(22px,3.2vw,40px);padding:16px 30px;color:var(--ink)}
+  .mq-track .dot{color:var(--royal)}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  .zoom{height:200vh;position:relative}
+  .zoom-sticky{position:sticky;top:0;height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;padding:0 6vw}
+  .zoom-inner{will-change:transform}
+  .zoom-kicker{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:18px}
+  .zoom-line{font-family:var(--disp);font-weight:700;font-size:clamp(34px,6.4vw,92px);line-height:1.02;letter-spacing:-.03em}
+  .zoom-line em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+  .commit{background:var(--paper-2);border-top:1px solid var(--line)}
+  .commit-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:var(--maxw);margin:0 auto}
+  .commit-left{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,4vw,64px);gap:20px}
+  .label{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--forest);display:flex;align-items:center;gap:12px}
+  .label::before{content:"";width:28px;height:1px;background:var(--forest)}
+  .commit-left h2{font-size:clamp(30px,4vw,54px);line-height:1.05;max-width:15ch}
+  .commit-left h2 em{font-style:normal;color:var(--royal)}
+  .commit-left p{color:var(--ink-soft);max-width:42ch;font-size:16px}
+  .commit-right{padding:16vh clamp(24px,4vw,64px)}
+  .deed{padding:38px 0;border-bottom:1px solid var(--line)}.deed:last-child{border-bottom:0}
+  .deed .num{font-family:var(--disp);font-weight:600;font-size:12px;color:var(--ink-faint);letter-spacing:.1em}
+  .deed h3{font-size:clamp(24px,3vw,38px);margin:8px 0 10px;line-height:1.08}
+  .deed h3 em{font-style:normal;color:var(--forest)}
+  .deed p{color:var(--ink-soft);margin:0;max-width:42ch}
+  @media (max-width:860px){.commit-wrap{grid-template-columns:1fr}.commit-left{position:relative;height:auto;padding:76px clamp(22px,6vw,40px) 24px}.commit-right{padding:6px clamp(22px,6vw,40px) 64px}.deed{padding:28px 0}}
+
+  .light-field{position:relative;background:var(--navy);color:#EAF1FF;overflow:hidden;padding:clamp(76px,11vh,140px) clamp(18px,4vw,52px)}
+  .light-field::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 120%, rgba(50,205,50,.25), transparent 60%)}
+  .lf-head{max-width:var(--maxw);margin:0 auto;position:relative;z-index:2;text-align:center}
+  .lf-head .label{justify-content:center;color:var(--mint)}.lf-head .label::before{background:var(--mint)}
+  .lf-head h2{font-size:clamp(30px,4.6vw,62px);line-height:1.06;margin:16px auto 0;max-width:18ch;color:#fff}
+  .lf-head h2 em{font-style:normal;color:var(--mint)}
+  .constellation{position:relative;width:100%;max-width:1000px;height:min(44vh,340px);margin:40px auto 8px;z-index:2}
+  .spark{position:absolute;border-radius:50%;background:var(--mint);box-shadow:0 0 10px 2px rgba(152,251,152,.8);opacity:0;transform:scale(0);will-change:transform,opacity}
+  .lf-note{text-align:center;color:rgba(234,241,255,.5);font-family:var(--disp);font-weight:500;font-size:11px;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:2}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:var(--maxw);margin:50px auto 0;position:relative;z-index:2;text-align:center}
+  .stat .fig{font-family:var(--disp);font-weight:700;font-size:clamp(50px,8vw,104px);line-height:1;letter-spacing:-.03em;color:#fff}
+  .stat .fig em{color:var(--mint);font-style:normal}
+  .stat .cap{font-family:var(--disp);font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(234,241,255,.6);margin-top:10px}
+  @media (max-width:680px){.stats{grid-template-columns:1fr;gap:36px}}
+
+  .trust{padding:clamp(76px,11vh,130px) 0}
+  .trust-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(36px,6vw,88px);align-items:center}
+  .trust h2{font-size:clamp(30px,4.4vw,56px);line-height:1.05;margin:16px 0 0;max-width:16ch}
+  .trust h2 em{font-style:normal;color:var(--forest)}
+  .trust .pledge{margin-top:22px;color:var(--ink-soft);font-size:16px;max-width:46ch}
+  .trust .pledge b{color:var(--ink);font-weight:600}
+  .ledger{border-top:1px solid var(--line)}
+  .ledger .row{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .ledger .k{display:flex;align-items:center;gap:14px;font-family:var(--disp);font-weight:500;font-size:15px}
+  .ledger .ic{width:34px;height:34px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--paper-2);border:1px solid var(--line);color:var(--forest)}
+  .ledger .v{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-soft);text-align:right}
+  .ledger .v.warn{color:var(--royal)}
+  @media (max-width:820px){.trust-grid{grid-template-columns:1fr;gap:42px}}
+
+  /* home gallery teaser strip */
+  .strip{padding:clamp(60px,9vh,110px) 0;border-top:1px solid var(--line)}
+  .strip-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px}
+  .strip-head h2{font-size:clamp(28px,4vw,52px);line-height:1.05;max-width:14ch}
+  .strip-head h2 em{font-style:normal;color:var(--forest)}
+  .strip-row{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:14px;margin-top:34px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+  .strip-row::-webkit-scrollbar{height:6px}.strip-row::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+  .gtile{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;scroll-snap-align:start;cursor:none}
+  .gtile .img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.04) brightness(1.02);transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+  .gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg, rgba(34,139,34,.78), rgba(28,57,187,.82));mix-blend-mode:multiply;transition:opacity .4s}
+  .gtile::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(to top, rgba(11,31,42,.55), transparent 55%)}
+  .gtile:hover .img{transform:scale(1.07)}
+  .gtile:hover::after{opacity:.7}
+  .gtile .cap{position:absolute;left:14px;right:14px;bottom:13px;z-index:3;color:#fff;font-family:var(--disp);font-weight:600;font-size:14px;line-height:1.2}
+  .gtile .cap small{display:block;font-weight:500;font-size:11px;letter-spacing:.06em;opacity:.85;margin-top:3px}
+
+  .final{position:relative;text-align:center;padding:clamp(86px,15vh,170px) clamp(18px,4vw,52px);overflow:hidden;border-top:1px solid var(--line);background:var(--paper-2)}
+  .final-glow{position:absolute;top:50%;left:50%;width:80vw;height:80vw;max-width:880px;max-height:880px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(135,206,235,.5), rgba(50,205,50,.12) 45%, rgba(65,105,225,0) 66%);filter:blur(8px);pointer-events:none}
+  .final h2{position:relative;font-size:clamp(36px,6.4vw,92px);line-height:1.02;margin:0 auto;max-width:16ch}
+  .final h2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  .final p{position:relative;color:var(--ink-soft);max-width:48ch;margin:22px auto 32px;font-size:17px}
+  .final .actions{position:relative;justify-content:center}
+
+  .sec{padding:clamp(72px,10vh,120px) 0}
+  .sec h2.big{font-size:clamp(30px,4.4vw,56px);line-height:1.05;margin:16px 0 0;max-width:18ch}
+  .sec h2.big em{font-style:normal;color:var(--forest)}
+  .sec .sub{color:var(--ink-soft);max-width:52ch;margin-top:18px;font-size:16px}
+
+  .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:start;margin-top:50px}
+  .story-grid p{color:var(--ink-soft);font-size:16.5px;margin:0 0 18px}
+  .story-grid p strong{color:var(--ink);font-weight:600}
+  .quote-card{background:var(--navy);color:#EAF1FF;border-radius:22px;overflow:hidden;position:sticky;top:90px}
+  .quote-card .ph{aspect-ratio:4/3;position:relative;background-size:cover;background-position:center;background-image:var(--photo);filter:grayscale(1) contrast(1.04)}
+  .quote-card .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(150deg, rgba(34,139,34,.7), rgba(28,57,187,.78));mix-blend-mode:multiply}
+  .quote-card .ph::after{content:"Founder portrait — placeholder";position:absolute;left:14px;bottom:12px;font-family:var(--disp);font-weight:500;font-size:11px;letter-spacing:.04em;color:#fff;background:rgba(11,31,42,.5);padding:5px 10px;border-radius:6px}
+  .quote-card .body{padding:30px}
+  .quote-card blockquote{font-family:var(--disp);font-weight:600;font-size:clamp(20px,2.2vw,28px);line-height:1.25;margin:0 0 16px;letter-spacing:-.01em}
+  .quote-card cite{font-style:normal;font-size:13px;color:rgba(234,241,255,.6)}
+  @media (max-width:860px){.story-grid{grid-template-columns:1fr}.quote-card{position:relative;top:0}}
+
+  .values{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:46px}
+  .vcard{background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:28px 24px;transition:transform .35s,box-shadow .35s,border-color .35s}
+  .vcard:hover{transform:translateY(-6px);box-shadow:0 22px 50px -28px rgba(34,139,34,.45);border-color:var(--lime)}
+  .vcard .emo{font-size:30px}
+  .vcard h3{font-size:20px;margin:16px 0 8px}
+  .vcard p{color:var(--ink-soft);font-size:14.5px;margin:0}
+  @media (max-width:880px){.values{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.values{grid-template-columns:1fr}}
+
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+  .tcard{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper-3)}
+  .tcard .ph{aspect-ratio:1;position:relative;background-size:cover;background-position:center;background-image:var(--ph);filter:grayscale(1)}
+  .tcard .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg, rgba(34,139,34,.6), rgba(28,57,187,.66));mix-blend-mode:multiply}
+  .tcard .meta{padding:20px 22px}
+  .tcard h3{font-size:18px}.tcard .role{font-family:var(--disp);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--forest);margin:4px 0 10px}
+  .tcard p{color:var(--ink-soft);font-size:14px;margin:0}
+  @media (max-width:820px){.team{grid-template-columns:1fr}}
+
+  .duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);margin-top:48px}
+  .panel h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:18px}
+  .ticks{list-style:none;margin:0;padding:0}
+  .ticks li{position:relative;padding:13px 0 13px 34px;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:15.5px}
+  .ticks li::before{content:"✦";position:absolute;left:0;top:12px;color:var(--forest);font-size:15px}
+  @media (max-width:820px){.duo{grid-template-columns:1fr;gap:40px}}
+
+  .journey{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px}
+  .jstep{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:18px;padding:26px 24px;overflow:hidden}
+  .jstep .n{font-family:var(--disp);font-weight:800;font-size:46px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(34,139,34,.5);letter-spacing:-.04em}
+  .jstep h3{font-size:19px;margin:12px 0 8px}
+  .jstep p{color:var(--ink-soft);font-size:14.5px;margin:0}
+  @media (max-width:880px){.journey{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.journey{grid-template-columns:1fr}}
+
+  .voices{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px}
+  .voice{background:var(--paper-3);border:1px solid var(--line);border-radius:18px;padding:30px;position:relative}
+  .voice::before{content:"\201C";position:absolute;top:6px;left:18px;font-family:var(--disp);font-weight:800;font-size:80px;color:rgba(65,105,225,.22);line-height:1}
+  .voice p{font-family:var(--disp);font-weight:500;font-size:18px;line-height:1.4;margin:18px 0 14px;letter-spacing:-.01em}
+  .voice cite{font-style:normal;font-size:13px;color:var(--ink-soft)}
+  @media (max-width:760px){.voices{grid-template-columns:1fr}}
+
+  .formwrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,72px);margin-top:48px;align-items:start}
+  .formwrap .intro h2{font-size:clamp(28px,3.6vw,46px);line-height:1.05}
+  .formwrap .intro p{color:var(--ink-soft);margin-top:16px;max-width:40ch}
+  form.vform{background:var(--paper-2);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,3vw,38px)}
+  .field{margin-bottom:18px}
+  .field label{font-family:var(--disp);font-weight:500;font-size:13px;letter-spacing:.02em;color:var(--ink);display:block;margin-bottom:7px}
+  .field input,.field select{width:100%;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--paper-3);font-family:var(--body);font-size:15px;color:var(--ink);outline:none;transition:border-color .25s,box-shadow .25s;cursor:none}
+  .field input:focus,.field select:focus{border-color:var(--forest);box-shadow:0 0 0 4px rgba(34,139,34,.15)}
+  .fnote{font-size:13px;color:var(--ink-faint);margin:6px 0 20px}
+  .form-ok{display:none;align-items:center;gap:10px;color:var(--forest);font-family:var(--disp);font-weight:600;font-size:14px;margin-top:14px}
+  @media (max-width:820px){.formwrap{grid-template-columns:1fr;gap:34px}}
+
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(48px,7vh,90px) 0;border-bottom:1px solid var(--line)}
+  .story:nth-child(even) .story-media{order:2}
+  .story-media{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:5/4;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.04)}
+  .story-media::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(34,139,34,.7), rgba(28,57,187,.78));mix-blend-mode:multiply}
+  .story-media .tag{position:absolute;left:14px;top:14px;z-index:2;font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.06em;background:rgba(11,31,42,.55);color:#fff;padding:6px 11px;border-radius:8px;filter:none}
+  .story-body .st-label{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest)}
+  .story-body h3{font-size:clamp(24px,3.2vw,40px);line-height:1.08;margin:12px 0 16px}
+  .story-body p{color:var(--ink-soft);font-size:16px;margin:0 0 14px}
+  .story-body p strong{color:var(--ink);font-weight:600}
+  @media (max-width:820px){.story{grid-template-columns:1fr;gap:22px}.story:nth-child(even) .story-media{order:0}}
+
+  /* GALLERY masonry */
+  .masonry{columns:3;column-gap:16px;margin-top:46px}
+  @media (max-width:880px){.masonry{columns:2}}
+  @media (max-width:520px){.masonry{columns:1}}
+  .mtile{position:relative;border-radius:16px;overflow:hidden;margin:0 0 16px;break-inside:avoid;cursor:none}
+  .mtile .img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(1) contrast(1.04) brightness(1.02);transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+  .mtile .frame{position:relative;width:100%}
+  .mtile::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg, rgba(34,139,34,.8), rgba(28,57,187,.84));mix-blend-mode:multiply;transition:opacity .45s;z-index:1}
+  .mtile::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(to top, rgba(11,31,42,.6), transparent 52%)}
+  .mtile:hover .img{transform:scale(1.06)}
+  .mtile:hover::after{opacity:.62}
+  .mtile .cap{position:absolute;z-index:3;left:15px;right:15px;bottom:14px;color:#fff;font-family:var(--disp);font-weight:600;font-size:15px;line-height:1.2}
+  .mtile .cap small{display:block;font-weight:500;font-size:11px;letter-spacing:.06em;opacity:.85;margin-top:3px}
+  .mtile .zoom-ic{position:absolute;z-index:3;top:13px;right:13px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);color:#fff;font-size:14px;opacity:0;transition:opacity .35s}
+  .mtile:hover .zoom-ic{opacity:1}
+
+  .lightbox{position:fixed;inset:0;z-index:100;background:rgba(8,16,30,.92);display:none;align-items:center;justify-content:center;padding:24px;cursor:none}
+  .lightbox.on{display:flex}
+  .lightbox .lb-inner{max-width:min(900px,92vw);text-align:center}
+  .lightbox img{width:100%;height:auto;max-height:78vh;border-radius:14px;object-fit:cover;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+  .lightbox .lb-cap{color:#fff;font-family:var(--disp);font-weight:600;margin-top:16px;font-size:16px}
+  .lightbox .lb-close{position:absolute;top:22px;right:26px;color:#fff;font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+
+  footer{background:var(--navy);color:#EAF1FF;padding:clamp(56px,8vh,92px) clamp(18px,4vw,52px) 38px}
+  .foot-top{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  .foot-brand .mark{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 32% 28%, var(--mint), var(--forest) 52%, var(--peacock));box-shadow:0 0 22px rgba(152,251,152,.4);margin-bottom:16px}
+  .foot-brand b{font-family:var(--disp);font-weight:600;font-size:20px;display:block;margin-bottom:8px;color:#fff}
+  .foot-brand p{color:rgba(234,241,255,.6);max-width:34ch;font-size:15px}
+  .foot-col h4{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(234,241,255,.45);margin-bottom:14px}
+  .foot-col a{display:block;padding:7px 0;color:rgba(234,241,255,.85);transition:color .25s,padding-left .25s;font-size:15px;cursor:none}
+  .foot-col a:hover{color:var(--mint);padding-left:6px}
+  .foot-bottom{max-width:var(--maxw);margin:50px auto 0;padding-top:22px;border-top:1px solid rgba(234,241,255,.14);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;font-family:var(--disp);font-weight:500;font-size:11px;letter-spacing:.04em;color:rgba(234,241,255,.5)}
+  @media (max-width:760px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+
+  .reveal{opacity:0;transform:translateY(26px)}
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1!important;transform:none!important}
+    .mq-track,.scroll-hint .l{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="cursor-light" id="cLight"></div>
+<div class="cursor-dot" id="cDot"></div>
+<div class="aperture" id="aperture"></div>
+
+<nav>
+  <a class="brand" data-page="home" href="#home">
+    <span class="mark"></span>
+    <span><b>Maryann's Love &amp; Light</b><small>Foundation · Nigeria</small></span>
+  </a>
+  <div class="nav-links">
+    <a data-page="home" href="#home">Home</a>
+    <a data-page="about" href="#about">About</a>
+    <a data-page="volunteer" href="#volunteer">Volunteer</a>
+    <a data-page="impact" href="#impact">Impact</a>
+    <a data-page="gallery" href="#gallery">Gallery</a>
+    <a class="nav-cta" data-magnet href="https://light-on-nigeria.lovable.app/donate">Donate</a>
+  </div>
+</nav>
+
+<!-- ============ HOME ============ -->
+<main class="page active" id="home">
+  <header class="phero">
+    <div class="glow g1" data-par="0.18"></div>
+    <div class="glow g2" data-par="-0.1"></div>
+    <div class="inner">
+      <span class="eyebrow" data-hero>Love in action — across Nigeria</span>
+      <h1>
+        <span class="ln"><span>One act of love.</span></span>
+        <span class="ln"><span>A lifetime of <em>light.</em></span></span>
+      </h1>
+      <div class="phero-bottom">
+        <p class="lead" data-hero>We show up for the forgotten — with food, school fees, books and care. <b>No agenda. No middlemen.</b> Just kindness that reaches the people who need it most.</p>
+        <div class="actions" data-hero>
+          <a class="btn btn-solid" data-magnet href="https://light-on-nigeria.lovable.app/donate">Support our work <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" data-magnet data-page="impact" href="#impact">See what we've done</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>scroll</span><span class="l"></span></div>
+  </header>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="mq-track">
+      <span>food <span class="dot">✦</span> school fees <span class="dot">✦</span> books <span class="dot">✦</span> care <span class="dot">✦</span> </span>
+      <span>food <span class="dot">✦</span> school fees <span class="dot">✦</span> books <span class="dot">✦</span> care <span class="dot">✦</span> </span>
+    </div>
+  </div>
+
+  <section class="zoom">
+    <div class="zoom-sticky">
+      <div class="zoom-inner">
+        <div class="zoom-kicker">Our one commitment</div>
+        <div class="zoom-line">We go where the need is —<br>and we <em>stay until it's met.</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="commit">
+    <div class="commit-wrap">
+      <div class="commit-left">
+        <span class="label">What we do</span>
+        <h2>We don't have one programme. We have <em>one promise.</em></h2>
+        <p>Some days that means food for a family on the street. Other days, a child's school fees so they don't drop out. Sometimes, textbooks left at an orphanage. We show up — consistently, compassionately, practically.</p>
+      </div>
+      <div class="commit-right">
+        <div class="deed reveal"><div class="num">01</div><h3>A <em>warm meal,</em> today</h3><p>We deliver food directly to families and individuals who'd otherwise go without — no queue, no paperwork.</p></div>
+        <div class="deed reveal"><div class="num">02</div><h3>School fees, <em>paid in full</em></h3><p>When a child is about to be sent home, we step in so learning never stops over money.</p></div>
+        <div class="deed reveal"><div class="num">03</div><h3>Books for <em>every shelf</em></h3><p>Textbooks and reading materials dropped at orphanages and schools that have gone without.</p></div>
+        <div class="deed reveal"><div class="num">04</div><h3>Care that <em>stays</em></h3><p>We don't visit once for a photo. We return — because being remembered is its own kind of light.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light-field">
+    <div class="lf-head">
+      <span class="label">The impact, so far</span>
+      <h2>Every point of light here is <em>a person we reached.</em></h2>
+    </div>
+    <div class="constellation" id="constellation"></div>
+    <div class="lf-note">each spark · one life touched · documented</div>
+    <div class="stats">
+      <div class="stat"><div class="fig" data-count="6">0</div><div class="cap">Communities reached</div></div>
+      <div class="stat"><div class="fig" data-count="300" data-plus="1">0</div><div class="cap">People supported</div></div>
+      <div class="stat"><div class="fig" data-count="30" data-plus="1">0</div><div class="cap">Volunteers mobilized</div></div>
+    </div>
+  </section>
+
+  <!-- gallery teaser -->
+  <section class="strip"><div class="wrap">
+    <div class="strip-head">
+      <div>
+        <span class="label reveal">From the field</span>
+        <h2 class="reveal" style="margin-top:12px">Every visit, <em>documented.</em></h2>
+      </div>
+      <a class="btn btn-ghost reveal" data-magnet data-page="gallery" href="#gallery">Open the gallery <span class="arrow">→</span></a>
+    </div>
+    <div class="strip-row reveal">
+      <div class="gtile" data-img="ph" data-cap="Feeding 100 souls" data-sub="Dec 2023"><div class="img" style="background-image:var(--ph)"></div><div class="cap">Feeding 100 souls<small>Dec 2023</small></div></div>
+      <div class="gtile" data-img="photo" data-cap="Street outreach" data-sub="Lagos"><div class="img" style="background-image:var(--photo)"></div><div class="cap">Street outreach<small>Lagos</small></div></div>
+      <div class="gtile" data-img="ph" data-cap="A day of rest" data-sub="Anambra"><div class="img" style="background-image:var(--ph)"></div><div class="cap">A day of rest<small>Anambra</small></div></div>
+      <div class="gtile" data-img="photo" data-cap="Books &amp; belonging" data-sub="Orphanage"><div class="img" style="background-image:var(--photo)"></div><div class="cap">Books &amp; belonging<small>Orphanage</small></div></div>
+      <div class="gtile" data-img="ph" data-cap="Sharing a meal" data-sub="Lagos"><div class="img" style="background-image:var(--ph)"></div><div class="cap">Sharing a meal<small>Lagos</small></div></div>
+    </div>
+  </div></section>
+
+  <section class="trust"><div class="wrap"><div class="trust-grid">
+    <div>
+      <span class="label reveal">Where your kindness goes</span>
+      <h2 class="reveal">Driven by kindness, <em>not contracts.</em></h2>
+      <p class="pledge reveal"><b>100% of every donation</b> goes directly to the people who need it — food in hands, fees paid, books delivered. Every outreach is documented, so you can see exactly where your love landed.</p>
+    </div>
+    <div class="ledger reveal">
+      <div class="row"><div class="k"><span class="ic">♥</span> Goes directly to people in need</div><div class="v">100%</div></div>
+      <div class="row"><div class="k"><span class="ic">⚲</span> Middlemen between you &amp; them</div><div class="v">0</div></div>
+      <div class="row"><div class="k"><span class="ic">▦</span> CAC registration</div><div class="v">No. 7663513</div></div>
+      <div class="row"><div class="k"><span class="ic">⊙</span> Outreaches documented</div><div class="v">Every one</div></div>
+      <div class="row"><div class="k"><span class="ic">◴</span> Independent verification</div><div class="v warn">Pending</div></div>
+    </div>
+  </div></div></section>
+
+  <section class="final">
+    <div class="final-glow"></div>
+    <h2 data-hero>Ready to <em>show up</em> with us?</h2>
+    <p data-hero>Volunteer your time, or fund the next outreach. Either way, someone feels it.</p>
+    <div class="actions" data-hero>
+      <a class="btn btn-solid" data-magnet href="https://light-on-nigeria.lovable.app/donate">Donate now <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" data-magnet data-page="volunteer" href="#volunteer">Volunteer</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ ABOUT ============ -->
+<main class="page" id="about">
+  <header class="phero">
+    <div class="glow g1" data-par="0.16"></div>
+    <div class="inner">
+      <span class="eyebrow" data-hero>About the foundation</span>
+      <h1><span class="ln"><span>More than charity.</span></span><span class="ln"><span>It's a <em>promise.</em></span></span></h1>
+      <div class="phero-bottom"><p class="lead" data-hero>Maryann's Love and Light Foundation was born from a single act of kindness — and a decision to do more. Today we show up for the less privileged across Nigeria, <b>one community at a time.</b></p></div>
+    </div>
+    <div class="scroll-hint"><span>scroll</span><span class="l"></span></div>
+  </header>
+
+  <section class="sec"><div class="wrap">
+    <span class="label reveal">Our story</span>
+    <h2 class="big reveal" style="margin-top:14px">It started with <em>one little girl,</em> and a decision to do more.</h2>
+    <div class="story-grid">
+      <div>
+        <p class="reveal">During her industrial training in Lagos, our founder watched a little girl beg for food on the streets every single day. She gave what she could — food, money, whatever was on her. <strong>But one day, something shifted.</strong></p>
+        <p class="reveal">She realised she could do more — not for one child, but for the many children, families and individuals across Nigeria who fall through the cracks every day. She called her friends together. They talked, they planned, they committed. From that circle of willing hearts, the foundation was born.</p>
+        <p class="reveal">It is named for <strong>Maryann — the CEO's mother</strong> — a woman whose strength, reliability and unconditional love became the living definition of everything this foundation stands for. Her name isn't a title. It's a standard we hold ourselves to every day.</p>
+      </div>
+      <div class="quote-card reveal">
+        <div class="ph"></div>
+        <div class="body">
+          <blockquote>"Life isn't changed in a day — but we can show them what unconditional love from a stranger looks like."</blockquote>
+          <cite>— Founder &amp; CEO, Maryann's Love and Light Foundation</cite>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="light-field">
+    <div class="lf-head">
+      <span class="label">Our mission</span>
+      <h2>To show up — and to remind people they are <em>not forgotten.</em></h2>
+    </div>
+    <p class="lf-note" style="max-width:60ch;margin:26px auto 0;text-transform:none;letter-spacing:.02em;font-size:15px;line-height:1.6;color:rgba(234,241,255,.7)">Consistently, compassionately, practically — we give people not just what they need today, but the dignity, support and care that says they matter.</p>
+  </section>
+
+  <section class="sec"><div class="wrap">
+    <span class="label reveal">Core values</span>
+    <h2 class="big reveal" style="margin-top:14px">Four things we <em>never</em> compromise on.</h2>
+    <div class="values">
+      <div class="vcard reveal"><div class="emo">💚</div><h3>Compassion</h3><p>We lead with empathy in everything we do.</p></div>
+      <div class="vcard reveal"><div class="emo">🤝</div><h3>Community</h3><p>Change happens together, not alone.</p></div>
+      <div class="vcard reveal"><div class="emo">✊</div><h3>Action</h3><p>We don't just talk about the problem — we show up.</p></div>
+      <div class="vcard reveal"><div class="emo">🌟</div><h3>Dignity</h3><p>Every person we serve deserves respect and care.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec" style="background:var(--paper-2);border-top:1px solid var(--line)"><div class="wrap">
+    <div class="trust-grid">
+      <div>
+        <span class="label reveal">Why we exist</span>
+        <h2 class="big reveal" style="margin-top:14px">Too many people are left behind. <em>We refuse to accept it.</em></h2>
+      </div>
+      <p class="reveal" style="color:var(--ink-soft);font-size:16.5px">Millions of Nigerians live without access to basic support, care or community. Children go hungry. Families struggle in silence. We exist because we believe ordinary people, working together with extraordinary commitment, can change that.</p>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <span class="label reveal">Meet the team</span>
+    <h2 class="big reveal" style="margin-top:14px">The hands behind <em>the work.</em></h2>
+    <p class="sub reveal">Profiles coming soon — full bios appear here once we receive team details.</p>
+    <div class="team">
+      <div class="tcard reveal"><div class="ph"></div><div class="meta"><h3>Name pending</h3><div class="role">Role pending</div><p>A short biography will appear here once we receive team details.</p></div></div>
+      <div class="tcard reveal"><div class="ph"></div><div class="meta"><h3>Name pending</h3><div class="role">Role pending</div><p>A short biography will appear here once we receive team details.</p></div></div>
+      <div class="tcard reveal"><div class="ph"></div><div class="meta"><h3>Name pending</h3><div class="role">Role pending</div><p>A short biography will appear here once we receive team details.</p></div></div>
+    </div>
+  </div></section>
+
+  <section class="final">
+    <div class="final-glow"></div>
+    <h2 data-hero>Be part of <em>the promise.</em></h2>
+    <p data-hero>Give your time, or fund the next outreach.</p>
+    <div class="actions" data-hero>
+      <a class="btn btn-solid" data-magnet data-page="volunteer" href="#volunteer">Volunteer <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" data-magnet href="https://light-on-nigeria.lovable.app/donate">Donate</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ VOLUNTEER ============ -->
+<main class="page" id="volunteer">
+  <header class="phero">
+    <div class="glow g1" data-par="0.16"></div>
+    <div class="glow g2" data-par="-0.1"></div>
+    <div class="inner">
+      <span class="eyebrow" data-hero>Volunteer with us</span>
+      <h1><span class="ln"><span>Just show up.</span></span><span class="ln"><span>That's <em>all it takes.</em></span></span></h1>
+      <div class="phero-bottom"><p class="lead" data-hero>If you live in a state we're visiting and you care about your community — <b>you already qualify.</b></p>
+        <div class="actions" data-hero><a class="btn btn-solid" data-magnet data-page="volunteer" href="#apply">Apply now <span class="arrow">→</span></a></div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>scroll</span><span class="l"></span></div>
+  </header>
+
+  <section class="sec"><div class="wrap">
+    <div class="duo">
+      <div class="panel reveal"><h3>Who can volunteer?</h3>
+        <ul class="ticks">
+          <li>You live in or around the state we're visiting</li>
+          <li>You have a genuine desire to help your community</li>
+          <li>You're willing to give your time with a good heart</li>
+          <li>You're respectful, reliable and ready to show up</li>
+        </ul>
+      </div>
+      <div class="panel reveal"><h3>What you'll be doing</h3>
+        <ul class="ticks">
+          <li>Distributing food, clothing and essential supplies</li>
+          <li>Spending time with children who need attention and care</li>
+          <li>Supporting outreach events and foundation programmes</li>
+          <li>Helping with logistics, setup and coordination</li>
+          <li>Simply being present — your humanity matters most</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" style="background:var(--paper-2);border-top:1px solid var(--line)"><div class="wrap">
+    <span class="label reveal">The volunteer journey</span>
+    <h2 class="big reveal" style="margin-top:14px">Six steps from <em>"I'm in"</em> to standing in the community.</h2>
+    <div class="journey">
+      <div class="jstep reveal"><div class="n">01</div><h3>Apply</h3><p>Fill our short form. Less than 3 minutes.</p></div>
+      <div class="jstep reveal"><div class="n">02</div><h3>Get confirmed</h3><p>We reach out within 24–48 hours to confirm your spot.</p></div>
+      <div class="jstep reveal"><div class="n">03</div><h3>Attend briefings</h3><p>Join pre-visit meetings so you know what to expect.</p></div>
+      <div class="jstep reveal"><div class="n">04</div><h3>In-person practice</h3><p>About a week before, we prepare together as a team.</p></div>
+      <div class="jstep reveal"><div class="n">05</div><h3>Show up</h3><p>Arrive, meet your team, give your time to a community.</p></div>
+      <div class="jstep reveal"><div class="n">06</div><h3>Stay connected</h3><p>After each visit, you join our growing volunteer family.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <span class="label reveal">Volunteer voices</span>
+    <div class="voices">
+      <div class="voice reveal"><p>One of the reasons I volunteered was to give back to the society where it all began for me — and it was one of the most meaningful things I've ever done.</p><cite>— Volunteer, Lagos State</cite></div>
+      <div class="voice reveal"><p>What I loved most was how everybody was involved in everything, and how we worked through it together in such an orderly way.</p><cite>— Volunteer, Lagos State</cite></div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="apply" style="background:var(--paper-2);border-top:1px solid var(--line)"><div class="wrap">
+    <div class="formwrap">
+      <div class="intro reveal">
+        <span class="label">Join the next visit</span>
+        <h2 style="margin-top:14px">Fill the form. We'll be in touch within <em style="font-style:normal;color:var(--forest)">48 hours.</em></h2>
+        <p>One form. A few minutes. And a community that will be glad you showed up.</p>
+      </div>
+      <form class="vform reveal" id="vform" novalidate>
+        <div class="field"><label>Full name *</label><input name="name" required placeholder="Your full name"></div>
+        <div class="field"><label>Phone number *</label><input name="phone" required placeholder="+234 …"></div>
+        <div class="field"><label>Email address *</label><input name="email" type="email" required placeholder="you@email.com"></div>
+        <div class="field"><label>State of residence *</label><input name="state" required placeholder="e.g. Lagos"></div>
+        <div class="field"><label>How did you hear about us?</label>
+          <select name="source"><option>Instagram</option><option>A friend</option><option>Search</option><option>An outreach event</option><option>Other</option></select>
+        </div>
+        <p class="fnote">When you submit, your details are sent to our team by email. We typically respond within 24–48 hours.</p>
+        <button type="submit" class="btn btn-solid" data-magnet style="width:100%;justify-content:center">Submit application <span class="arrow">→</span></button>
+        <div class="form-ok" id="formOk">✦ Opening your email app — just hit send to reach our team.</div>
+      </form>
+    </div>
+  </div></section>
+</main>
+
+<!-- ============ IMPACT ============ -->
+<main class="page" id="impact">
+  <header class="phero">
+    <div class="glow g1" data-par="0.16"></div>
+    <div class="glow g2" data-par="-0.1"></div>
+    <div class="inner">
+      <span class="eyebrow" data-hero>Stories of change</span>
+      <h1><span class="ln"><span>Behind every face</span></span><span class="ln"><span>is a story <em>worth telling.</em></span></span></h1>
+      <div class="phero-bottom"><p class="lead" data-hero>We don't just visit communities — we sit with them, listen, and see them. These are real people whose lives were touched by a moment of kindness. <b>This is why we show up.</b></p></div>
+    </div>
+    <div class="scroll-hint"><span>scroll</span><span class="l"></span></div>
+  </header>
+
+  <section class="light-field">
+    <div class="lf-head"><span class="label">By the numbers</span><h2>Small team. <em>Real reach.</em></h2></div>
+    <div class="stats">
+      <div class="stat"><div class="fig" data-count="6">0</div><div class="cap">Communities reached</div></div>
+      <div class="stat"><div class="fig" data-count="300" data-plus="1">0</div><div class="cap">People supported</div></div>
+      <div class="stat"><div class="fig" data-count="30" data-plus="1">0</div><div class="cap">Volunteers mobilized</div></div>
+    </div>
+  </section>
+
+  <section class="sec"><div class="wrap">
+    <span class="label reveal">Stories from the field</span>
+
+    <div class="story reveal">
+      <div class="story-media" style="background-image:var(--ph)"><span class="tag">Story 01 · Anambra State</span></div>
+      <div class="story-body">
+        <div class="st-label">Buying a day of rest</div>
+        <h3>More than the struggle: Mrs. Okafor</h3>
+        <p>Mrs Okafor wakes before dawn every day to hawk on the streets of Akwa LGA, feeding her children on whatever she can sell. When our team met her mid-morning — already on her feet — a simple conversation became something deeper.</p>
+        <p>That day we provided food and essentials for her, her children, and other families nearby. For the first time in a long while she didn't have to wonder about the next meal. <strong>She told us she felt seen.</strong></p>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-media" style="background-image:var(--photo)"><span class="tag">Story 02 · Dec 2, 2023</span></div>
+      <div class="story-body">
+        <div class="st-label">The Give Back Project</div>
+        <h3>Feeding 100 souls</h3>
+        <p>Our first major project set out with a simple goal: nourishment for those facing the hardest times. By the end of the day we'd fed nearly 100 people — children with eyes full of hope, adults carrying on with remarkable strength.</p>
+        <p>We met people living with disabilities who continue with extraordinary resilience. We don't just bring food — we bring the message that no one is left behind.</p>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-media" style="background-image:var(--ph)"><span class="tag">Story 03 · Lagos State</span></div>
+      <div class="story-body">
+        <div class="st-label">The beginning of a dream</div>
+        <h3>Our first charity event</h3>
+        <p>Every great mission starts with a single step. Ours took us from busy streets to the quiet halls of an orphanage in Lagos — sharing food with people on the street, providing for children who needed to know they weren't forgotten.</p>
+        <p>None of it would have been possible without our volunteers, whose kindness lit up every smile. This was just the beginning.</p>
+      </div>
+    </div>
+
+    <div class="story reveal">
+      <div class="story-media" style="background-image:var(--photo)"><span class="tag">Story 04 · Orphanage Outreach</span></div>
+      <div class="story-body">
+        <div class="st-label">Books, bowls and belonging</div>
+        <h3>A day at the orphanage</h3>
+        <p>We arrived with cartons of foodstuffs, textbooks, notebooks and a team ready to stay. What began as a supply drop became something more — children reading with volunteers, sharing stories, laughing.</p>
+        <p>Beyond provisions, they received time, attention, and the reminder that they're not invisible. <strong>We came to give supplies. We left having given belonging.</strong></p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="final">
+    <div class="final-glow"></div>
+    <h2 data-hero>See it all in <em>the gallery.</em></h2>
+    <p data-hero>We document every outreach. Browse the photo wall — or help us write the next story.</p>
+    <div class="actions" data-hero>
+      <a class="btn btn-solid" data-magnet data-page="gallery" href="#gallery">Open gallery <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" data-magnet data-page="volunteer" href="#volunteer">Volunteer</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============ GALLERY ============ -->
+<main class="page" id="gallery">
+  <header class="phero" style="min-height:78svh">
+    <div class="glow g1" data-par="0.16"></div>
+    <div class="glow g2" data-par="-0.1"></div>
+    <div class="inner">
+      <span class="eyebrow" data-hero>The gallery</span>
+      <h1><span class="ln"><span>The work,</span></span><span class="ln"><span>in <em>pictures.</em></span></span></h1>
+      <div class="phero-bottom"><p class="lead" data-hero>Every meal, every book, every smile — captured. Tap any photo to open it. <b>Placeholders for now</b> — drop your real outreach shots straight in.</p></div>
+    </div>
+    <div class="scroll-hint"><span>scroll</span><span class="l"></span></div>
+  </header>
+
+  <section class="sec" style="padding-top:clamp(50px,7vh,80px)"><div class="wrap">
+    <span class="label reveal">A wall of kindness</span>
+    <h2 class="big reveal" style="margin-top:14px">Hundreds of moments. <em>One mission.</em></h2>
+
+    <div class="masonry reveal" id="gallery-grid">
+      <div class="mtile" data-img="ph" data-cap="Feeding 100 souls" data-sub="The Give Back Project · Dec 2023"><div class="frame" style="padding-bottom:128%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Feeding 100 souls<small>The Give Back Project · Dec 2023</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Street outreach" data-sub="Lagos State"><div class="frame" style="padding-bottom:75%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Street outreach<small>Lagos State</small></div></div>
+      <div class="mtile" data-img="ph" data-cap="A day of rest" data-sub="Mrs Okafor · Anambra"><div class="frame" style="padding-bottom:100%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">A day of rest<small>Mrs Okafor · Anambra</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Books &amp; belonging" data-sub="Orphanage outreach"><div class="frame" style="padding-bottom:120%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Books &amp; belonging<small>Orphanage outreach</small></div></div>
+      <div class="mtile" data-img="ph" data-cap="Reading together" data-sub="Orphanage"><div class="frame" style="padding-bottom:75%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Reading together<small>Orphanage</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Provisions delivered" data-sub="Lagos"><div class="frame" style="padding-bottom:128%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Provisions delivered<small>Lagos</small></div></div>
+      <div class="mtile" data-img="ph" data-cap="Our first event" data-sub="Lagos State"><div class="frame" style="padding-bottom:100%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Our first event<small>Lagos State</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Volunteers on the ground" data-sub="Outreach day"><div class="frame" style="padding-bottom:75%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Volunteers on the ground<small>Outreach day</small></div></div>
+      <div class="mtile" data-img="ph" data-cap="Sharing a meal" data-sub="On the street"><div class="frame" style="padding-bottom:120%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Sharing a meal<small>On the street</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Notebooks &amp; textbooks" data-sub="Back to school"><div class="frame" style="padding-bottom:100%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Notebooks &amp; textbooks<small>Back to school</small></div></div>
+      <div class="mtile" data-img="ph" data-cap="Smiles that say it all" data-sub="Community visit"><div class="frame" style="padding-bottom:75%"><div class="img" style="background-image:var(--ph)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Smiles that say it all<small>Community visit</small></div></div>
+      <div class="mtile" data-img="photo" data-cap="Not forgotten" data-sub="Every visit, documented"><div class="frame" style="padding-bottom:128%"><div class="img" style="background-image:var(--photo)"></div></div><div class="zoom-ic">⤢</div><div class="cap">Not forgotten<small>Every visit, documented</small></div></div>
+    </div>
+  </div></section>
+
+  <section class="final">
+    <div class="final-glow"></div>
+    <h2 data-hero>Want to be in <em>the next one?</em></h2>
+    <p data-hero>Follow @maryanns_llf to see each event as it happens — or come stand with us.</p>
+    <div class="actions" data-hero>
+      <a class="btn btn-solid" data-magnet data-page="volunteer" href="#volunteer">Volunteer <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" data-magnet href="https://light-on-nigeria.lovable.app/donate">Donate</a>
+    </div>
+  </section>
+</main>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lb-close">✕ close</span>
+  <div class="lb-inner"><img id="lbImg" alt="Outreach photo"><div class="lb-cap" id="lbCap"></div></div>
+</div>
+
+<footer>
+  <div class="foot-top">
+    <div class="foot-brand">
+      <div class="mark"></div>
+      <b>Maryann's Love &amp; Light Foundation</b>
+      <p>Showing up — consistently, compassionately, practically — for the less-privileged communities of Nigeria.</p>
+    </div>
+    <div class="foot-col"><h4>Explore</h4>
+      <a data-page="home" href="#home">Home</a>
+      <a data-page="about" href="#about">About</a>
+      <a data-page="volunteer" href="#volunteer">Volunteer</a>
+      <a data-page="impact" href="#impact">Impact</a>
+      <a data-page="gallery" href="#gallery">Gallery</a>
+      <a href="https://light-on-nigeria.lovable.app/donate">Donate</a>
+    </div>
+    <div class="foot-col"><h4>Reach us</h4>
+      <a href="https://www.instagram.com/maryanns_llf">@maryanns_llf</a>
+      <a href="mailto:Maryannsloveandlight@gmail.com">Email us</a>
+      <a href="https://wa.me/2347063472279">+234 706 347 2279</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Maryann's Love &amp; Light Foundation · Made with love.</span>
+    <span>Driven by kindness, not contracts. · CAC No. 7663513</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine   = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const hasGsap = !!window.gsap;
+  if(hasGsap) gsap.registerPlugin(ScrollTrigger);
+
+  // image sources for lightbox
+  const ROOT = getComputedStyle(document.documentElement);
+  const SRC = {
+    ph: (ROOT.getPropertyValue('--ph').match(/url\((.*)\)/)||[])[1]?.replace(/^["']|["']$/g,'') || '',
+    photo: (ROOT.getPropertyValue('--photo').match(/url\((.*)\)/)||[])[1]?.replace(/^["']|["']$/g,'') || ''
+  };
+
+  let lenis;
+  if(!reduce && window.Lenis){
+    lenis = new Lenis({duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+    const raf=t=>{lenis.raf(t);requestAnimationFrame(raf);}; requestAnimationFrame(raf);
+    if(hasGsap) lenis.on('scroll',ScrollTrigger.update);
+  }
+  const toTop=()=>{ if(lenis){lenis.scrollTo(0,{immediate:true});} window.scrollTo(0,0); };
+
+  if(fine && hasGsap){
+    const cl=document.getElementById('cLight'),cd=document.getElementById('cDot');
+    const xl=gsap.quickTo(cl,'x',{duration:.6,ease:'power3'}),yl=gsap.quickTo(cl,'y',{duration:.6,ease:'power3'}),
+          xd=gsap.quickTo(cd,'x',{duration:.12,ease:'power2'}),yd=gsap.quickTo(cd,'y',{duration:.12,ease:'power2'});
+    window.addEventListener('mousemove',e=>{xl(e.clientX);yl(e.clientY);xd(e.clientX);yd(e.clientY);cl.style.opacity=1;});
+    document.addEventListener('mouseover',e=>{ if(e.target.closest('a,button,input,select,[data-magnet],.mtile,.gtile')) gsap.to(cd,{scale:2.6,duration:.3}); });
+    document.addEventListener('mouseout',e=>{ if(e.target.closest('a,button,input,select,[data-magnet],.mtile,.gtile')) gsap.to(cd,{scale:1,duration:.3}); });
+  }
+  if(fine && !reduce && hasGsap){
+    document.addEventListener('mousemove',e=>{
+      const el=e.target.closest('[data-magnet]'); if(!el) return;
+      const r=el.getBoundingClientRect();
+      gsap.to(el,{x:(e.clientX-(r.left+r.width/2))/r.width*20,y:(e.clientY-(r.top+r.height/2))/r.height*20,duration:.4,ease:'power3'});
+    });
+    document.addEventListener('mouseout',e=>{ const el=e.target.closest('[data-magnet]'); if(el) gsap.to(el,{x:0,y:0,duration:.5,ease:'elastic.out(1,.4)'}); });
+  }
+
+  function buildSparks(page){
+    const field=page.querySelector('.constellation'); if(!field||field.dataset.built) return;
+    field.dataset.built='1';
+    const N=130,frag=document.createDocumentFragment(),sparks=[];
+    for(let i=0;i<N;i++){const s=document.createElement('span');s.className='spark';
+      s.style.left=(Math.random()*100)+'%';s.style.top=(Math.random()*100)+'%';
+      const sz=3+Math.random()*5;s.style.width=s.style.height=sz+'px';frag.appendChild(s);sparks.push(s);}
+    field.appendChild(frag); field._sparks=sparks;
+  }
+
+  function buildAnims(page){
+    if(!hasGsap){ page.querySelectorAll('.reveal').forEach(el=>el.style.opacity=1); return; }
+    ScrollTrigger.getAll().forEach(t=>t.kill());
+    page.querySelectorAll('.reveal').forEach(el=>{
+      gsap.set(el,{opacity:0,y:26});
+      gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
+    });
+    page.querySelectorAll('[data-par]').forEach(el=>{
+      const ph=el.closest('.phero'); if(!ph) return;
+      gsap.to(el,{yPercent:parseFloat(el.dataset.par)*100,ease:'none',scrollTrigger:{trigger:ph,start:'top top',end:'bottom top',scrub:true}});
+    });
+    const zoom=page.querySelector('.zoom');
+    if(zoom) gsap.fromTo(page.querySelector('.zoom-inner'),{scale:.62,opacity:.25},{scale:1,opacity:1,ease:'none',scrollTrigger:{trigger:zoom,start:'top top',end:'bottom bottom',scrub:.6}});
+    page.querySelectorAll('[data-count]').forEach(el=>{
+      const target=+el.dataset.count,plus=el.dataset.plus?'+':'';
+      el.textContent='0';
+      ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+        gsap.to({v:0},{v:target,duration:1.7,ease:'power2.out',
+          onUpdate:function(){el.textContent=Math.round(this.targets()[0].v);},
+          onComplete:()=>{el.innerHTML=target+'<em>'+plus+'</em>';}});
+      }});
+    });
+    // gallery tile stagger
+    const grid=page.querySelector('#gallery-grid');
+    if(grid){
+      gsap.from(grid.querySelectorAll('.mtile'),{opacity:0,y:34,duration:.7,ease:'power3.out',stagger:.06,
+        scrollTrigger:{trigger:grid,start:'top 84%'}});
+    }
+    buildSparks(page);
+    const field=page.querySelector('.constellation');
+    if(field && field._sparks){
+      gsap.set(field._sparks,{opacity:0,scale:0});
+      ScrollTrigger.create({trigger:field,start:'top 82%',once:true,onEnter:()=>{
+        gsap.to(field._sparks,{opacity:1,scale:1,duration:.6,ease:'back.out(2)',stagger:{each:.012,from:'random'},
+          onComplete:()=>{ field._sparks.forEach(s=>gsap.to(s,{opacity:'random(.45,1)',duration:'random(1.4,3.2)',repeat:-1,yoyo:true,ease:'sine.inOut',delay:Math.random()*2})); }});
+      }});
+    }
+    ScrollTrigger.refresh();
+  }
+
+  function playIntro(page){
+    if(!hasGsap||reduce){ page.querySelectorAll('[data-hero]').forEach(el=>el.style.opacity=1); return; }
+    const lines=page.querySelectorAll('.phero h1 .ln>span'), hero=page.querySelectorAll('[data-hero]');
+    gsap.set(lines,{yPercent:115}); gsap.set(hero,{opacity:0,y:16});
+    gsap.timeline()
+      .to(lines,{yPercent:0,duration:1.1,ease:'power4.out',stagger:.1})
+      .to(hero,{opacity:1,y:0,duration:.7,ease:'power3.out',stagger:.08},'-=.7');
+    const glows=page.querySelectorAll('.phero .glow'); if(glows.length) gsap.from(glows,{opacity:0,scale:.6,duration:1.6,ease:'power2.out'});
+  }
+
+  const pages={}; document.querySelectorAll('.page').forEach(p=>pages[p.id]=p);
+  const ap=document.getElementById('aperture');
+  let current='home', busy=false;
+
+  function setNav(id){ document.querySelectorAll('.nav-links a[data-page]').forEach(a=>a.classList.toggle('active',a.dataset.page===id)); }
+  function coverScale(){ return (Math.hypot(innerWidth,innerHeight)/120)*2.4; }
+
+  function activate(id){
+    Object.values(pages).forEach(p=>p.classList.remove('active'));
+    pages[id].classList.add('active');
+    current=id; setNav(id); toTop();
+    buildAnims(pages[id]); playIntro(pages[id]);
+  }
+  function scrollToAnchor(sel){ const el=document.querySelector(sel); if(!el) return; if(lenis) lenis.scrollTo(el,{offset:-10}); else el.scrollIntoView({behavior:'smooth'}); }
+  function go(id, anchor){
+    if(!pages[id]) return;
+    if(id===current){ if(anchor) scrollToAnchor(anchor); return; }
+    if(busy) return;
+    if(!hasGsap||reduce){ activate(id); if(anchor) scrollToAnchor(anchor); return; }
+    busy=true;
+    gsap.set(ap,{scale:0,opacity:1});
+    gsap.timeline({onComplete:()=>{busy=false; if(anchor) scrollToAnchor(anchor);}})
+      .to(ap,{scale:coverScale(),duration:.55,ease:'power3.in'})
+      .add(()=>activate(id))
+      .to(ap,{scale:0,duration:.6,ease:'power3.out'},'+=.05')
+      .set(ap,{opacity:0});
+  }
+
+  document.addEventListener('click',e=>{
+    // lightbox tiles
+    const tile=e.target.closest('.mtile,.gtile');
+    if(tile && tile.dataset.img){
+      const lb=document.getElementById('lightbox');
+      document.getElementById('lbImg').src = SRC[tile.dataset.img] || '';
+      document.getElementById('lbCap').textContent = (tile.dataset.cap||'') + (tile.dataset.sub? ' — '+tile.dataset.sub : '');
+      lb.classList.add('on');
+      return;
+    }
+    const link=e.target.closest('[data-page]'); if(!link) return;
+    e.preventDefault();
+    const href=link.getAttribute('href')||'';
+    if(href.startsWith('#') && href.length>1 && document.querySelector(href) && !pages[href.slice(1)]){
+      go(link.dataset.page, href);
+    } else { go(link.dataset.page); }
+  });
+
+  // close lightbox
+  const lb=document.getElementById('lightbox');
+  lb.addEventListener('click',()=>lb.classList.remove('on'));
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
+
+  document.addEventListener('submit',e=>{
+    if(e.target.id!=='vform') return; e.preventDefault();
+    const f=e.target, val=n=>((f.querySelector('[name="'+n+'"]')||{}).value||'');
+    const body=`Name: ${val('name')}%0D%0APhone: ${val('phone')}%0D%0AEmail: ${val('email')}%0D%0AState: ${val('state')}%0D%0AHeard via: ${val('source')}`;
+    document.getElementById('formOk').style.display='flex';
+    window.location.href=`mailto:Maryannsloveandlight@gmail.com?subject=Volunteer%20Application&body=${body}`;
+  });
+
+  activate('home');
+})();
+</script>
+</body>
+</html>
