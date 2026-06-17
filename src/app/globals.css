@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fcfbf8; /* brand-paper */
+  --foreground: #111827; /* brand-ink */
+  --primary: #006644; /* brand-primary */
+  --primary-foreground: #ffffff;
+  --secondary: #f5f6f3; /* brand-secondary */
+  --secondary-foreground: #111827;
+  --brand-yellow: #fabc09;
+  --brand-green: #10b981;
+  --brand-ink: #111827;
+  --brand-paper: #fcfbf8;
+  --border: rgba(17, 24, 39, 0.1);
+  --muted: #6b7280;
+  --muted-foreground: #4b5563;
+  --card: #ffffff;
+  --card-foreground: #111827;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-green: var(--brand-green);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-paper: var(--brand-paper);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  
+  --font-sans: var(--font-sans), sans-serif;
+  --font-display: var(--font-display), sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Micro-animations and polish */
+.transition-all-custom {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.32, 1);
+}
+
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.32, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.32, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -8px rgba(17, 24, 39, 0.08);
+}
