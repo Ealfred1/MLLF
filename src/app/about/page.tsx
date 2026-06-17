@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import TransitionLink from "@/components/TransitionLink";
+import RippleImage from "@/components/RippleImage";
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -143,10 +144,11 @@ export default function About() {
               </p>
             </div>
             <div className="quote-card reveal">
-              <div
+              <RippleImage
+                src="/images/founder.jpg"
+                alt="Founder portrait"
                 className="ph"
-                style={{ backgroundImage: 'url("/images/founder.jpg")' }}
-              ></div>
+              />
               <div className="body">
                 <blockquote>
                   "Life isn't changed in a day — but we can show them what
@@ -248,10 +250,11 @@ export default function About() {
           </p>
           <div className="team">
             <div className="tcard reveal">
-              <div
+              <RippleImage
+                src="/images/team-01.jpg"
+                alt="Team member 01"
                 className="ph"
-                style={{ backgroundImage: 'url("/images/team-01.jpg")' }}
-              ></div>
+              />
               <div className="meta">
                 <h3>Name pending</h3>
                 <div className="role">Role pending</div>
@@ -261,10 +264,11 @@ export default function About() {
               </div>
             </div>
             <div className="tcard reveal">
-              <div
+              <RippleImage
+                src="/images/team-02.jpg"
+                alt="Team member 02"
                 className="ph"
-                style={{ backgroundImage: 'url("/images/team-02.jpg")' }}
-              ></div>
+              />
               <div className="meta">
                 <h3>Name pending</h3>
                 <div className="role">Role pending</div>
@@ -274,10 +278,11 @@ export default function About() {
               </div>
             </div>
             <div className="tcard reveal">
-              <div
+              <RippleImage
+                src="/images/team-03.jpg"
+                alt="Team member 03"
                 className="ph"
-                style={{ backgroundImage: 'url("/images/team-03.jpg")' }}
-              ></div>
+              />
               <div className="meta">
                 <h3>Name pending</h3>
                 <div className="role">Role pending</div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import TransitionLink from "@/components/TransitionLink";
+import RippleImage from "@/components/RippleImage";
 
 export default function Impact() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -183,12 +184,13 @@ export default function Impact() {
           <span className="label reveal">Stories from the field</span>
 
           <div className="story reveal">
-            <div
+            <RippleImage
+              src="/images/outreach-06.jpg"
+              alt="Story 01 Outreach"
               className="story-media"
-              style={{ backgroundImage: 'url("/images/outreach-06.jpg")' }}
             >
               <span className="tag">Story 01 · Anambra State</span>
-            </div>
+            </RippleImage>
             <div className="story-body">
               <div className="st-label">Buying a day of rest</div>
               <h3>More than the struggle: Mrs. Okafor</h3>
@@ -208,12 +210,13 @@ export default function Impact() {
           </div>
 
           <div className="story reveal">
-            <div
+            <RippleImage
+              src="/images/outreach-07.jpg"
+              alt="Story 02 Outreach"
               className="story-media"
-              style={{ backgroundImage: 'url("/images/outreach-07.jpg")' }}
             >
               <span className="tag">Story 02 · Dec 2, 2023</span>
-            </div>
+            </RippleImage>
             <div className="story-body">
               <div className="st-label">The Give Back Project</div>
               <h3>Feeding 100 souls</h3>
@@ -232,12 +235,13 @@ export default function Impact() {
           </div>
 
           <div className="story reveal">
-            <div
+            <RippleImage
+              src="/images/outreach-08.jpg"
+              alt="Story 03 Outreach"
               className="story-media"
-              style={{ backgroundImage: 'url("/images/outreach-08.jpg")' }}
             >
               <span className="tag">Story 03 · Lagos State</span>
-            </div>
+            </RippleImage>
             <div className="story-body">
               <div className="st-label">The beginning of a dream</div>
               <h3>Our first charity event</h3>
@@ -255,12 +259,13 @@ export default function Impact() {
           </div>
 
           <div className="story reveal">
-            <div
+            <RippleImage
+              src="/images/outreach-09.jpg"
+              alt="Story 04 Outreach"
               className="story-media"
-              style={{ backgroundImage: 'url("/images/outreach-09.jpg")' }}
             >
               <span className="tag">Story 04 · Orphanage Outreach</span>
-            </div>
+            </RippleImage>
             <div className="story-body">
               <div className="st-label">Books, bowls and belonging</div>
               <h3>A day at the orphanage</h3>

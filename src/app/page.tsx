@@ -8,6 +8,7 @@ import ZoomWord from "@/components/ZoomWord";
 import CommitmentSplit from "@/components/CommitmentSplit";
 import Constellation from "@/components/Constellation";
 import TrustLedger from "@/components/TrustLedger";
+import RippleImage from "@/components/RippleImage";
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -165,10 +166,11 @@ export default function Home() {
               data-cap="Feeding 100 souls"
               data-sub="Dec 2023"
             >
-              <div
+              <RippleImage
+                src="/images/outreach-01.jpg"
+                alt="Feeding 100 souls"
                 className="img"
-                style={{ backgroundImage: 'url("/images/outreach-01.jpg")' }}
-              ></div>
+              />
               <div className="cap">
                 Feeding 100 souls<small>Dec 2023</small>
               </div>
@@ -179,10 +181,11 @@ export default function Home() {
               data-cap="Street outreach"
               data-sub="Lagos"
             >
-              <div
+              <RippleImage
+                src="/images/outreach-02.jpg"
+                alt="Street outreach"
                 className="img"
-                style={{ backgroundImage: 'url("/images/outreach-02.jpg")' }}
-              ></div>
+              />
               <div className="cap">
                 Street outreach<small>Lagos</small>
               </div>
@@ -193,10 +196,11 @@ export default function Home() {
               data-cap="A day of rest"
               data-sub="Anambra"
             >
-              <div
+              <RippleImage
+                src="/images/outreach-03.jpg"
+                alt="A day of rest"
                 className="img"
-                style={{ backgroundImage: 'url("/images/outreach-03.jpg")' }}
-              ></div>
+              />
               <div className="cap">
                 A day of rest<small>Anambra</small>
               </div>
@@ -207,10 +211,11 @@ export default function Home() {
               data-cap="Books &amp; belonging"
               data-sub="Orphanage"
             >
-              <div
+              <RippleImage
+                src="/images/outreach-04.jpg"
+                alt="Books &amp; belonging"
                 className="img"
-                style={{ backgroundImage: 'url("/images/outreach-04.jpg")' }}
-              ></div>
+              />
               <div className="cap">
                 Books &amp; belonging<small>Orphanage</small>
               </div>
@@ -221,10 +226,11 @@ export default function Home() {
               data-cap="Sharing a meal"
               data-sub="Lagos"
             >
-              <div
+              <RippleImage
+                src="/images/outreach-05.jpg"
+                alt="Sharing a meal"
                 className="img"
-                style={{ backgroundImage: 'url("/images/outreach-05.jpg")' }}
-              ></div>
+              />
               <div className="cap">
                 Sharing a meal<small>Lagos</small>
               </div>

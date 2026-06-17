@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import RippleImage from "./RippleImage";
 
 interface Tile {
   id: number;
@@ -64,10 +65,7 @@ export default function GalleryGrid() {
           data-sub={tile.sub}
         >
           <div className="frame" style={{ paddingBottom: tile.paddingBottom }}>
-            <div
-              className="img"
-              style={{ backgroundImage: `url("${tile.img}")` }}
-            ></div>
+            <RippleImage src={tile.img} alt={tile.cap} className="img" />
           </div>
           <div className="zoom-ic">⤢</div>
           <div className="cap">
