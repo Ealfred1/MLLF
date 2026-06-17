@@ -36,8 +36,8 @@
   --disp: var(--font-poppins), system-ui, sans-serif;
   --body: var(--font-roboto), system-ui, sans-serif;
   --grad: linear-gradient(105deg, var(--forest), var(--royal));
-  --ph: url("/images/outreach-01.jpg");
-  --photo: url("/images/founder.jpg");
+  --ph: url("/outreach-1.svg");
+  --photo: url("/team-comfort-udoh.svg");
   --maxw: 1280px;
 }
 
@@ -910,7 +910,7 @@ nav {
   position: relative;
   border-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  aspect-ratio: 2/5;
   scroll-snap-align: start;
   cursor: none;
 }
@@ -920,7 +920,6 @@ nav {
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: grayscale(1) contrast(1.04) brightness(1.02);
   transition: transform .6s cubic-bezier(.2, .7, .3, 1);
 }
 
@@ -928,7 +927,7 @@ nav {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(150deg, rgba(34, 139, 34, .78), rgba(28, 57, 187, .82));
+  background: none;
   mix-blend-mode: multiply;
   transition: opacity .4s;
 }
@@ -946,7 +945,7 @@ nav {
 }
 
 .gtile:hover::after {
-  opacity: .7;
+  opacity: 0;
 }
 
 .gtile .cap {
@@ -1076,19 +1075,17 @@ nav {
 }
 
 .quote-card .ph {
-  aspect-ratio: 4/3;
   position: relative;
   background-size: cover;
   background-position: center;
   background-image: var(--photo);
-  filter: grayscale(1) contrast(1.04);
 }
 
 .quote-card .ph::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(150deg, rgba(34, 139, 34, .7), rgba(28, 57, 187, .78));
+  background: none;
   mix-blend-mode: multiply;
 }
 
@@ -1203,14 +1200,13 @@ nav {
   position: relative;
   background-size: cover;
   background-position: center;
-  filter: grayscale(1);
 }
 
 .tcard .ph::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(150deg, rgba(34, 139, 34, .6), rgba(28, 57, 187, .66));
+  background: none;
   mix-blend-mode: multiply;
 }
 
@@ -1486,14 +1482,13 @@ form.vform {
   aspect-ratio: 5/4;
   background-size: cover;
   background-position: center;
-  filter: grayscale(1) contrast(1.04);
 }
 
 .story-media::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(34, 139, 34, .7), rgba(28, 57, 187, .78));
+  background: none;
   mix-blend-mode: multiply;
 }
 
@@ -1582,7 +1577,6 @@ form.vform {
   inset: 0;
   background-size: cover;
   background-position: center;
-  filter: grayscale(1) contrast(1.04) brightness(1.02);
   transition: transform .6s cubic-bezier(.2, .7, .3, 1);
 }
 
@@ -1595,7 +1589,7 @@ form.vform {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(150deg, rgba(34, 139, 34, .8), rgba(28, 57, 187, .84));
+  background: none;
   mix-blend-mode: multiply;
   transition: opacity .45s;
   z-index: 1;
@@ -1614,7 +1608,7 @@ form.vform {
 }
 
 .mtile:hover::after {
-  opacity: .62;
+  opacity: 0;
 }
 
 .mtile .cap {

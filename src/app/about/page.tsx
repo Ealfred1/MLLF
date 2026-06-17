@@ -145,7 +145,7 @@ export default function About() {
             </div>
             <div className="quote-card reveal">
               <RippleImage
-                src="/images/founder.jpg"
+                src="/team-comfort-udoh.svg"
                 alt="Founder portrait"
                 className="ph"
               />
@@ -251,7 +251,7 @@ export default function About() {
           <div className="team">
             <div className="tcard reveal">
               <RippleImage
-                src="/images/team-01.jpg"
+                src="/team-emmanuel-ayomide.svg"
                 alt="Team member 01"
                 className="ph"
               />
@@ -265,7 +265,7 @@ export default function About() {
             </div>
             <div className="tcard reveal">
               <RippleImage
-                src="/images/team-02.jpg"
+                src="/team-comfort-udoh.svg"
                 alt="Team member 02"
                 className="ph"
               />
@@ -279,7 +279,7 @@ export default function About() {
             </div>
             <div className="tcard reveal">
               <RippleImage
-                src="/images/team-03.jpg"
+                src="/team-emmanuel-ayomide.svg"
                 alt="Team member 03"
                 className="ph"
               />

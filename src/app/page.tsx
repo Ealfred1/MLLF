@@ -162,12 +162,12 @@ export default function Home() {
           <div className="strip-row reveal">
             <div
               className="gtile"
-              data-img="/images/outreach-01.jpg"
+              data-img="/outreach-1.svg"
               data-cap="Feeding 100 souls"
               data-sub="Dec 2023"
             >
               <RippleImage
-                src="/images/outreach-01.jpg"
+                src="/outreach-1.svg"
                 alt="Feeding 100 souls"
                 className="img"
               />
@@ -177,12 +177,12 @@ export default function Home() {
             </div>
             <div
               className="gtile"
-              data-img="/images/outreach-02.jpg"
+              data-img="/kids.svg"
               data-cap="Street outreach"
               data-sub="Lagos"
             >
               <RippleImage
-                src="/images/outreach-02.jpg"
+                src="/kids.svg"
                 alt="Street outreach"
                 className="img"
               />
@@ -192,12 +192,12 @@ export default function Home() {
             </div>
             <div
               className="gtile"
-              data-img="/images/outreach-03.jpg"
+              data-img="/kidssss.svg"
               data-cap="A day of rest"
               data-sub="Anambra"
             >
               <RippleImage
-                src="/images/outreach-03.jpg"
+                src="/kidssss.svg"
                 alt="A day of rest"
                 className="img"
               />
@@ -207,12 +207,12 @@ export default function Home() {
             </div>
             <div
               className="gtile"
-              data-img="/images/outreach-04.jpg"
+              data-img="/outreach-1.svg"
               data-cap="Books &amp; belonging"
               data-sub="Orphanage"
             >
               <RippleImage
-                src="/images/outreach-04.jpg"
+                src="/outreach-1.svg"
                 alt="Books &amp; belonging"
                 className="img"
               />
@@ -222,12 +222,12 @@ export default function Home() {
             </div>
             <div
               className="gtile"
-              data-img="/images/outreach-05.jpg"
+              data-img="/kids.svg"
               data-cap="Sharing a meal"
               data-sub="Lagos"
             >
               <RippleImage
-                src="/images/outreach-05.jpg"
+                src="/kids.svg"
                 alt="Sharing a meal"
                 className="img"
               />

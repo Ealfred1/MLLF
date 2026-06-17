@@ -185,7 +185,7 @@ export default function Impact() {
 
           <div className="story reveal">
             <RippleImage
-              src="/images/outreach-06.jpg"
+              src="/kidssss.svg"
               alt="Story 01 Outreach"
               className="story-media"
             >
@@ -211,7 +211,7 @@ export default function Impact() {
 
           <div className="story reveal">
             <RippleImage
-              src="/images/outreach-07.jpg"
+              src="/outreach-1.svg"
               alt="Story 02 Outreach"
               className="story-media"
             >
@@ -236,7 +236,7 @@ export default function Impact() {
 
           <div className="story reveal">
             <RippleImage
-              src="/images/outreach-08.jpg"
+              src="/kids.svg"
               alt="Story 03 Outreach"
               className="story-media"
             >
@@ -260,7 +260,7 @@ export default function Impact() {
 
           <div className="story reveal">
             <RippleImage
-              src="/images/outreach-09.jpg"
+              src="/kidssss.svg"
               alt="Story 04 Outreach"
               className="story-media"
             >
