@@ -14,12 +14,14 @@ export default function TransitionLink({
   href,
   children,
   className,
+  onClick: onClickProp,
   ...rest
 }: TransitionLinkProps) {
   const router = useRouter();
 
   const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    onClickProp?.(e);
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
@@ -37,8 +39,8 @@ export default function TransitionLink({
     gsap.set(ap, { scale: 0, opacity: 1 });
     gsap.to(ap, {
       scale: cover,
-      duration: 0.55,
-      ease: "power3.in",
+      duration: 0.28,
+      ease: "power2.in",
       onComplete: () => {
         router.push(href);
       },

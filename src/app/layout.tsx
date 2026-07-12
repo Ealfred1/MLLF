@@ -7,6 +7,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CursorLight from "@/components/CursorLight";
 import PageTransition from "@/components/PageTransition";
 import Lightbox from "@/components/Lightbox";
+import FloatingNav from "@/components/FloatingNav";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -58,6 +59,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <Lightbox />
+          <FloatingNav />
         </SmoothScroll>
       </body>
     </html>

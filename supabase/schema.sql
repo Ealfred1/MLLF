@@ -24,17 +24,38 @@ CREATE TABLE IF NOT EXISTS public.volunteers (
     status TEXT NOT NULL DEFAULT 'pending'
 );
 
--- 3. Create table for Donations (Receipt notifications)
+-- 3. Create table for Donations (two-stage transparency tracker)
+--    status: 'processing' = donor reported a transfer/cheque (mint segment),
+--            'verified'   = finance team confirmed funds (solid forest green).
 CREATE TABLE IF NOT EXISTS public.donations (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
-    donor_name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    amount NUMERIC NOT NULL,
-    payment_method TEXT NOT NULL,
+    donor_name TEXT,
+    email TEXT,
+    amount NUMERIC NOT NULL CHECK (amount > 0),
+    payment_method TEXT NOT NULL CHECK (payment_method IN ('bank_transfer', 'cheque')),
     receipt_url TEXT,
-    status TEXT NOT NULL DEFAULT 'pending'
+    status TEXT NOT NULL DEFAULT 'processing' CHECK (status IN ('processing', 'verified'))
 );
+
+-- The two numeric tags from the transparency proposal. The view is what the
+-- public tracker reads, so raw rows (and receipt URLs) stay admin-only.
+CREATE OR REPLACE VIEW public.donation_totals AS
+SELECT
+    COALESCE(SUM(amount) FILTER (WHERE status = 'processing'), 0) AS total_pledged_processing,
+    COALESCE(SUM(amount) FILTER (WHERE status = 'verified'), 0) AS total_cleared_verified
+FROM public.donations;
+
+GRANT SELECT ON public.donation_totals TO anon, authenticated;
+
+-- Storage bucket for uploaded payment receipt screenshots.
+INSERT INTO storage.buckets (id, name, public)
+VALUES ('receipts', 'receipts', true)
+ON CONFLICT (id) DO NOTHING;
+
+CREATE POLICY "Allow public receipt uploads"
+    ON storage.objects FOR INSERT
+    WITH CHECK (bucket_id = 'receipts');
 
 -- Enable Row Level Security (RLS)
 ALTER TABLE public.outreaches ENABLE ROW LEVEL SECURITY;
@@ -65,14 +86,16 @@ CREATE POLICY "Allow authenticated admins to view/manage volunteers"
     USING (true)
     WITH CHECK (true);
 
--- Donations Policies: Anyone can insert (submit receipt), only authenticated admins can read/update
-CREATE POLICY "Allow public donation reports" 
-    ON public.donations FOR INSERT 
+-- Donations Policies: Anyone can insert (submit receipt), only authenticated admins can read/update.
+-- NOTE: the /admin review queue must therefore run behind Supabase Auth once
+-- this schema is live — its client-side access code is a demo gate only.
+CREATE POLICY "Allow public donation reports"
+    ON public.donations FOR INSERT
     WITH CHECK (true);
 
-CREATE POLICY "Allow authenticated admins to view/manage donations" 
-    ON public.donations FOR ALL 
-    TO authenticated 
+CREATE POLICY "Allow authenticated admins to view/manage donations"
+    ON public.donations FOR ALL
+    TO authenticated
     USING (true)
     WITH CHECK (true);
 

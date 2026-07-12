@@ -1,11 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import TrustLedger from "@/components/TrustLedger";
+import DonationTracker from "@/components/DonationTracker";
+import DonateModal from "@/components/DonateModal";
 
 export default function DonateClient() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -46,15 +50,15 @@ export default function DonateClient() {
       // 2. Play Scroll Reveals
       const reveals = containerRef.current?.querySelectorAll(".reveal");
       reveals?.forEach((el) => {
-        gsap.set(el, { opacity: 0, y: 26 });
+        gsap.set(el, { opacity: 0, y: 16 });
         gsap.to(el, {
           opacity: 1,
           y: 0,
-          duration: 0.85,
-          ease: "power3.out",
+          duration: 0.45,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 88%",
+            start: "top 92%",
           },
         });
       });
@@ -81,19 +85,6 @@ export default function DonateClient() {
     return () => ctx.revert();
   }, []);
 
-  const handleOnlinePayment = () => {
-    // Read credentials from env
-    const paystackKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
-    const flutterwaveKey = process.env.NEXT_PUBLIC_FLUTTERWAVE_PUBLIC_KEY;
-    console.log("Online payment checkouts ready with environment keys:", {
-      paystackKey,
-      flutterwaveKey,
-    });
-    alert(
-      "Digital checkout initialized!\n(Integration scaffold is ready; keys will be read from environment variables)"
-    );
-  };
-
   return (
     <main className="page active" id="donate" ref={containerRef}>
       <header className="phero">
@@ -115,9 +106,19 @@ export default function DonateClient() {
           </h1>
           <div className="phero-bottom">
             <p className="lead" data-hero>
-              Every naira, every dollar, every supply we receive directly fuels
+              Every naira, every meal, every supply we receive directly fuels
               our next community outreach. <b>Choose how you want to support.</b>
             </p>
+            <div className="actions" data-hero>
+              <button
+                type="button"
+                className="btn btn-solid donate-cta"
+                data-magnet
+                onClick={() => setModalOpen(true)}
+              >
+                Donate now <span className="arrow">→</span>
+              </button>
+            </div>
           </div>
         </div>
         <div className="scroll-hint">
@@ -127,6 +128,36 @@ export default function DonateClient() {
       </header>
 
       <section className="sec">
+        <div className="wrap">
+          <span className="label reveal">Live campaign</span>
+          <h2 className="big reveal" style={{ marginTop: "14px" }}>
+            Watch every gift <em>move the goal.</em>
+          </h2>
+          <p className="sub reveal">
+            The moment you report a transfer or cheque it appears on the bar in
+            mint green. Once our finance team confirms the funds in our account,
+            it turns solid — permanently.
+          </p>
+          <div className="reveal" style={{ marginTop: "36px" }}>
+            <DonationTracker refreshKey={refreshKey} />
+          </div>
+          <div className="actions reveal" style={{ marginTop: "28px" }}>
+            <button
+              type="button"
+              className="btn btn-solid donate-cta"
+              data-magnet
+              onClick={() => setModalOpen(true)}
+            >
+              Donate now <span className="arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="sec"
+        style={{ background: "var(--paper-2)", borderTop: "1px solid var(--line)" }}
+      >
         <div className="wrap">
           <span className="label reveal">Ways to give</span>
           <h2 className="big reveal" style={{ marginTop: "14px" }}>
@@ -161,20 +192,17 @@ export default function DonateClient() {
         </div>
       </section>
 
-      <section
-        className="sec"
-        style={{ background: "var(--paper-2)", borderTop: "1px solid var(--line)" }}
-      >
+      <section className="sec">
         <div className="wrap">
           <span className="label reveal">Bank Transfer</span>
           <h2 className="big reveal" style={{ marginTop: "14px" }}>
-            Direct <em>Transfer Accounts</em>
+            Direct <em>Naira transfers.</em>
           </h2>
           <p className="sub reveal">
-            You can make a direct deposit or wire transfer to our registered accounts:
+            We accept bank transfers and cheques into our Naira account only:
           </p>
 
-          <div className="duo" style={{ marginTop: "36px" }}>
+          <div className="duo" style={{ marginTop: "36px", gridTemplateColumns: "1fr" }}>
             <div
               className="panel reveal"
               style={{
@@ -182,6 +210,7 @@ export default function DonateClient() {
                 border: "1px solid var(--line)",
                 borderRadius: "18px",
                 padding: "30px",
+                maxWidth: "520px",
               }}
             >
               <h3 style={{ marginBottom: "16px", fontFamily: "var(--disp)", fontWeight: 700 }}>
@@ -197,72 +226,14 @@ export default function DonateClient() {
               <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
                 <strong>Account Number:</strong> [Account Number Placeholder]
               </p>
-            </div>
-
-            <div
-              className="panel reveal"
-              style={{
-                background: "var(--paper-3)",
-                border: "1px solid var(--line)",
-                borderRadius: "18px",
-                padding: "30px",
-              }}
-            >
-              <h3 style={{ marginBottom: "16px", fontFamily: "var(--disp)", fontWeight: 700 }}>
-                Domiciliary Account (USD)
-              </h3>
-              {/* TODO: Update with actual foreign/usd bank account details when provided */}
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Bank Name:</strong> [Bank Name Placeholder]
-              </p>
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Name:</strong> Maryann's Love & Light Foundation
-              </p>
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Number:</strong> [USD Account Number Placeholder]
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="sec">
-        <div className="wrap">
-          <div className="formwrap" style={{ gridTemplateColumns: "1fr 1fr", alignItems: "center" }}>
-            <div className="intro reveal">
-              <span className="label">Donate online</span>
-              <h2 style={{ marginTop: "14px" }}>
-                Secure card <em>payments</em>
-              </h2>
-              <p>
-                Support our outreach using card, bank app, USSD, or transfer via our
-                secure gateway scaffold.
-              </p>
-            </div>
-
-            <div
-              className="reveal"
-              style={{
-                background: "var(--paper-2)",
-                border: "1px solid var(--line)",
-                borderRadius: "22px",
-                padding: "38px",
-                textAlign: "center",
-              }}
-            >
-              <h3 style={{ marginBottom: "16px", fontFamily: "var(--disp)", fontWeight: 700 }}>
-                Card Donation
-              </h3>
-              <p style={{ color: "var(--ink-soft)", fontSize: "14.5px", marginBottom: "26px" }}>
-                Ready for Paystack / Flutterwave integration. Click below to pay online.
-              </p>
               <button
-                onClick={handleOnlinePayment}
-                className="btn btn-solid"
+                type="button"
+                className="btn btn-ghost"
                 data-magnet
-                style={{ width: "100%", justifyContent: "center" }}
+                style={{ marginTop: "14px" }}
+                onClick={() => setModalOpen(true)}
               >
-                Pay securely online <span className="arrow">→</span>
+                Sent it already? Report your transfer <span className="arrow">→</span>
               </button>
             </div>
           </div>
@@ -270,6 +241,12 @@ export default function DonateClient() {
       </section>
 
       <TrustLedger />
+
+      <DonateModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onPledged={() => setRefreshKey((k) => k + 1)}
+      />
     </main>
   );
 }

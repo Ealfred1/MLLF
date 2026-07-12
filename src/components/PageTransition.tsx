@@ -26,8 +26,8 @@ export default function PageTransition() {
       { scale: cover, opacity: 1 },
       {
         scale: 0,
-        duration: 0.6,
-        ease: "power3.out",
+        duration: 0.32,
+        ease: "power2.out",
         onComplete: () => gsap.set(ap, { opacity: 0 }),
       }
     );

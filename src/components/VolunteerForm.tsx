@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { supabase, isRealSupabase } from "@/lib/supabase";
+import { supabase } from "@/lib/supabase";
 
 export default function VolunteerForm() {
   const [formData, setFormData] = useState({
@@ -42,34 +42,22 @@ export default function VolunteerForm() {
     setLoading(true);
 
     try {
-      if (isRealSupabase) {
-        const { error } = await supabase.from("volunteers").insert({
-          full_name: name,
-          phone,
-          email,
-          state,
-          source,
-        });
+      const { error } = await supabase.from("volunteers").insert({
+        full_name: name,
+        phone,
+        email,
+        state,
+        source,
+      });
 
-        if (error) {
-          throw new Error(error.message);
-        }
-
-        setSuccessMsg(
-          "✦ Application submitted successfully! We will review and contact you within 48 hours."
-        );
-        setSuccess(true);
-      } else {
-        // Fallback to mailto
-        console.warn("Supabase not configured. Falling back to mailto link.");
-        
-        const body = `Name: ${name}%0D%0APhone: ${phone}%0D%0AEmail: ${email}%0D%0AState: ${state}%0D%0AHeard via: ${source}`;
-        
-        setSuccessMsg("✦ Opening your email app — just hit send to reach our team.");
-        setSuccess(true);
-
-        window.location.href = `mailto:Maryannsloveandlight@gmail.com?subject=Volunteer%20Application&body=${body}`;
+      if (error) {
+        throw new Error(error.message);
       }
+
+      setSuccessMsg(
+        "✦ Application submitted successfully! We will review and contact you within 48 hours."
+      );
+      setSuccess(true);
     } catch (err: any) {
       console.error(err);
       setErrorMsg(err.message || "An error occurred. Please try again.");
