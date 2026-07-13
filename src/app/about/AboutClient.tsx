@@ -108,10 +108,6 @@ export default function AboutClient() {
             </p>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <section className="sec">
@@ -145,7 +141,7 @@ export default function AboutClient() {
             </div>
             <div className="quote-card reveal">
               <RippleImage
-                src="/team-comfort-udoh.svg"
+                src="/founder.jpg"
                 alt="Founder portrait"
                 className="ph"
               />
@@ -235,62 +231,6 @@ export default function AboutClient() {
               exist because we believe ordinary people, working together with
               extraordinary commitment, can change that.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="sec">
-        <div className="wrap">
-          <span className="label reveal">Meet the team</span>
-          <h2 className="big reveal" style={{ marginTop: "14px" }}>
-            The hands behind <em>the work.</em>
-          </h2>
-          <p className="sub reveal">
-            Profiles coming soon — full bios appear here once we receive team details.
-          </p>
-          <div className="team">
-            <div className="tcard reveal">
-              <RippleImage
-                src="/team-emmanuel-ayomide.svg"
-                alt="Team member 01"
-                className="ph"
-              />
-              <div className="meta">
-                <h3>Name pending</h3>
-                <div className="role">Role pending</div>
-                <p>
-                  A short biography will appear here once we receive team details.
-                </p>
-              </div>
-            </div>
-            <div className="tcard reveal">
-              <RippleImage
-                src="/team-comfort-udoh.svg"
-                alt="Team member 02"
-                className="ph"
-              />
-              <div className="meta">
-                <h3>Name pending</h3>
-                <div className="role">Role pending</div>
-                <p>
-                  A short biography will appear here once we receive team details.
-                </p>
-              </div>
-            </div>
-            <div className="tcard reveal">
-              <RippleImage
-                src="/team-emmanuel-ayomide.svg"
-                alt="Team member 03"
-                className="ph"
-              />
-              <div className="meta">
-                <h3>Name pending</h3>
-                <div className="role">Role pending</div>
-                <p>
-                  A short biography will appear here once we receive team details.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

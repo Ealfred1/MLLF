@@ -120,10 +120,6 @@ export default function DonateClient() {
             </p>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <section className="sec">
@@ -132,7 +128,7 @@ export default function DonateClient() {
           <h2 className="big reveal" style={{ marginTop: "14px" }}>
             Choose how you wish to <em>partner with us.</em>
           </h2>
-          <div className="values" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
+          <div className="values values-3">
             <div className="vcard reveal">
               <div className="emo">💸</div>
               <h3>One-time gift</h3>
@@ -171,10 +167,11 @@ export default function DonateClient() {
             Direct <em>Transfer Accounts</em>
           </h2>
           <p className="sub reveal">
-            You can make a direct deposit or wire transfer to our registered accounts:
+            We currently receive donations via direct deposit or wire transfer
+            to our registered Naira account only:
           </p>
 
-          <div className="duo" style={{ marginTop: "36px" }}>
+          <div style={{ marginTop: "36px", maxWidth: "460px" }}>
             <div
               className="panel reveal"
               style={{
@@ -187,39 +184,14 @@ export default function DonateClient() {
               <h3 style={{ marginBottom: "16px", fontFamily: "var(--disp)", fontWeight: 700 }}>
                 Naira Account (NGN)
               </h3>
-              {/* TODO: Update with actual local bank account details when provided */}
               <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Bank Name:</strong> [Bank Name Placeholder]
+                <strong>Bank Name:</strong> Zenith Bank
               </p>
               <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Name:</strong> Maryann's Love & Light Foundation
+                <strong>Account Name:</strong> Maryanns Love and Light Foundation
               </p>
               <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Number:</strong> [Account Number Placeholder]
-              </p>
-            </div>
-
-            <div
-              className="panel reveal"
-              style={{
-                background: "var(--paper-3)",
-                border: "1px solid var(--line)",
-                borderRadius: "18px",
-                padding: "30px",
-              }}
-            >
-              <h3 style={{ marginBottom: "16px", fontFamily: "var(--disp)", fontWeight: 700 }}>
-                Domiciliary Account (USD)
-              </h3>
-              {/* TODO: Update with actual foreign/usd bank account details when provided */}
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Bank Name:</strong> [Bank Name Placeholder]
-              </p>
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Name:</strong> Maryann's Love & Light Foundation
-              </p>
-              <p style={{ margin: "8px 0", color: "var(--ink-soft)" }}>
-                <strong>Account Number:</strong> [USD Account Number Placeholder]
+                <strong>Account Number:</strong> 1312734692
               </p>
             </div>
           </div>
@@ -228,7 +200,7 @@ export default function DonateClient() {
 
       <section className="sec">
         <div className="wrap">
-          <div className="formwrap" style={{ gridTemplateColumns: "1fr 1fr", alignItems: "center" }}>
+          <div className="formwrap" style={{ alignItems: "center" }}>
             <div className="intro reveal">
               <span className="label">Donate online</span>
               <h2 style={{ marginTop: "14px" }}>

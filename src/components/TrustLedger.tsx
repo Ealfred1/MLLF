@@ -30,12 +30,6 @@ export default function TrustLedger() {
             </div>
             <div className="row">
               <div className="k">
-                <span className="ic">▦</span> CAC registration
-              </div>
-              <div className="v">No. 7663513</div>
-            </div>
-            <div className="row">
-              <div className="k">
                 <span className="ic">⊙</span> Outreaches documented
               </div>
               <div className="v">Every one</div>

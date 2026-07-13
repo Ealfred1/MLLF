@@ -130,10 +130,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <Marquee />
@@ -162,77 +158,77 @@ export default function Home() {
           <div className="strip-row reveal">
             <div
               className="gtile"
-              data-img="/outreach-1.svg"
-              data-cap="Feeding 100 souls"
-              data-sub="Dec 2023"
-            >
-              <RippleImage
-                src="/outreach-1.svg"
-                alt="Feeding 100 souls"
-                className="img"
-              />
-              <div className="cap">
-                Feeding 100 souls<small>Dec 2023</small>
-              </div>
-            </div>
-            <div
-              className="gtile"
-              data-img="/kids.svg"
+              data-img="/footbridge-giving.jpg"
               data-cap="Street outreach"
-              data-sub="Lagos"
+              data-sub="Lagos overpass"
             >
               <RippleImage
-                src="/kids.svg"
+                src="/footbridge-giving.jpg"
                 alt="Street outreach"
                 className="img"
               />
               <div className="cap">
-                Street outreach<small>Lagos</small>
+                Street outreach<small>Lagos overpass</small>
               </div>
             </div>
             <div
               className="gtile"
-              data-img="/kidssss.svg"
-              data-cap="A day of rest"
-              data-sub="Anambra"
+              data-img="/mother-child.jpg"
+              data-cap="A caring hand"
+              data-sub="Street outreach"
             >
               <RippleImage
-                src="/kidssss.svg"
-                alt="A day of rest"
+                src="/mother-child.jpg"
+                alt="A caring hand"
                 className="img"
               />
               <div className="cap">
-                A day of rest<small>Anambra</small>
+                A caring hand<small>Street outreach</small>
               </div>
             </div>
             <div
               className="gtile"
-              data-img="/outreach-1.svg"
-              data-cap="Books &amp; belonging"
-              data-sub="Orphanage"
+              data-img="/supplies-flatlay.jpg"
+              data-cap="Packing the provisions"
+              data-sub="Before every outreach"
             >
               <RippleImage
-                src="/outreach-1.svg"
+                src="/supplies-flatlay.jpg"
+                alt="Packing the provisions"
+                className="img"
+              />
+              <div className="cap">
+                Packing the provisions<small>Before every outreach</small>
+              </div>
+            </div>
+            <div
+              className="gtile"
+              data-img="/indoor-handoff.jpg"
+              data-cap="Books &amp; belonging"
+              data-sub="Distribution day"
+            >
+              <RippleImage
+                src="/indoor-handoff.jpg"
                 alt="Books &amp; belonging"
                 className="img"
               />
               <div className="cap">
-                Books &amp; belonging<small>Orphanage</small>
+                Books &amp; belonging<small>Distribution day</small>
               </div>
             </div>
             <div
               className="gtile"
-              data-img="/kids.svg"
-              data-cap="Sharing a meal"
-              data-sub="Lagos"
+              data-img="/courtyard-kids.jpg"
+              data-cap="A day to celebrate"
+              data-sub="Community visit"
             >
               <RippleImage
-                src="/kids.svg"
-                alt="Sharing a meal"
+                src="/courtyard-kids.jpg"
+                alt="A day to celebrate"
                 className="img"
               />
               <div className="cap">
-                Sharing a meal<small>Lagos</small>
+                A day to celebrate<small>Community visit</small>
               </div>
             </div>
           </div>

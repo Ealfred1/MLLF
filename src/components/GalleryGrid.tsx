@@ -13,18 +13,18 @@ interface Tile {
 }
 
 const TILES: Tile[] = [
-  { id: 1, img: "/outreach-1.svg", paddingBottom: "128%", cap: "Feeding 100 souls", sub: "The Give Back Project · Dec 2023" },
-  { id: 2, img: "/kids.svg", paddingBottom: "75%", cap: "Street outreach", sub: "Lagos State" },
-  { id: 3, img: "/kidssss.svg", paddingBottom: "100%", cap: "A day of rest", sub: "Mrs Okafor · Anambra" },
-  { id: 4, img: "/outreach-1.svg", paddingBottom: "120%", cap: "Books & belonging", sub: "Orphanage outreach" },
-  { id: 5, img: "/kids.svg", paddingBottom: "75%", cap: "Reading together", sub: "Orphanage" },
-  { id: 6, img: "/kidssss.svg", paddingBottom: "128%", cap: "Provisions delivered", sub: "Lagos" },
-  { id: 7, img: "/outreach-1.svg", paddingBottom: "100%", cap: "Our first event", sub: "Lagos State" },
-  { id: 8, img: "/kids.svg", paddingBottom: "75%", cap: "Volunteers on the ground", sub: "Outreach day" },
-  { id: 9, img: "/kidssss.svg", paddingBottom: "120%", cap: "Sharing a meal", sub: "On the street" },
-  { id: 10, img: "/outreach-1.svg", paddingBottom: "100%", cap: "Notebooks & textbooks", sub: "Back to school" },
-  { id: 11, img: "/kids.svg", paddingBottom: "75%", cap: "Smiles that say it all", sub: "Community visit" },
-  { id: 12, img: "/kidssss.svg", paddingBottom: "128%", cap: "Not forgotten", sub: "Every visit, documented" },
+  { id: 1, img: "/outreach-banner-1.jpg", paddingBottom: "56%", cap: "Feeding day at the Home", sub: "Faith Community Children's Home" },
+  { id: 2, img: "/footbridge-giving.jpg", paddingBottom: "178%", cap: "Street outreach", sub: "Lagos overpass" },
+  { id: 3, img: "/mother-child.jpg", paddingBottom: "177%", cap: "A caring hand", sub: "Street outreach" },
+  { id: 4, img: "/outreach-arrival.jpg", paddingBottom: "56%", cap: "Arriving with the team", sub: "Faith Community Children's Home" },
+  { id: 5, img: "/supplies-flatlay.jpg", paddingBottom: "178%", cap: "Packing the provisions", sub: "Before every outreach" },
+  { id: 6, img: "/outreach-canopy.jpg", paddingBottom: "56%", cap: "Sharing a moment together", sub: "Community outreach" },
+  { id: 7, img: "/orphanage-sign.jpg", paddingBottom: "178%", cap: "Registered & recognised", sub: "Compassionate Orphanage · Lagos" },
+  { id: 8, img: "/car-provisions.jpg", paddingBottom: "178%", cap: "Loaded up and ready", sub: "Supply run" },
+  { id: 9, img: "/outreach-crowd.jpg", paddingBottom: "56%", cap: "Faces we remember", sub: "Community visit" },
+  { id: 10, img: "/indoor-handoff.jpg", paddingBottom: "178%", cap: "One box at a time", sub: "Distribution day" },
+  { id: 11, img: "/outreach-banner-2.jpg", paddingBottom: "56%", cap: "Every visit, documented", sub: "Faith Community Children's Home" },
+  { id: 12, img: "/courtyard-kids.jpg", paddingBottom: "178%", cap: "A day to celebrate", sub: "Community visit" },
 ];
 
 export default function GalleryGrid() {

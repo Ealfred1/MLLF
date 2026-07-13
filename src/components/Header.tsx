@@ -1,10 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import TransitionLink from "./TransitionLink";
 
 export default function Header() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [lastPathname, setLastPathname] = useState(pathname);
+
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
+    setMenuOpen(false);
+  }
 
   const links = [
     { name: "Home", href: "/" },
@@ -52,6 +60,41 @@ export default function Header() {
         >
           Donate
         </TransitionLink>
+      </div>
+
+      <button
+        type="button"
+        className={`nav-burger${menuOpen ? " open" : ""}`}
+        aria-label="Toggle navigation menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen((v) => !v)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      {menuOpen && (
+        <div className="nav-overlay" onClick={() => setMenuOpen(false)} />
+      )}
+
+      <div className={`nav-drawer${menuOpen ? " open" : ""}`}>
+        {links.map((link) => {
+          const isActive =
+            link.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(link.href);
+
+          return (
+            <TransitionLink
+              key={link.href}
+              href={link.href}
+              className={isActive ? "active" : ""}
+            >
+              {link.name}
+            </TransitionLink>
+          );
+        })}
       </div>
     </nav>
   );

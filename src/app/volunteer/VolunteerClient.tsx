@@ -120,10 +120,6 @@ export default function VolunteerClient() {
             </div>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <section className="sec">

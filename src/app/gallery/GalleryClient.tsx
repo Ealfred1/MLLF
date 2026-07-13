@@ -108,10 +108,6 @@ export default function GalleryClient() {
             </p>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <section className="sec" style={{ paddingTop: "clamp(50px,7vh,80px)" }}>

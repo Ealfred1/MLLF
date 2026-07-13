@@ -49,7 +49,7 @@ const DEFAULT_OUTREACHES: Outreach[] = [
     location: 'Yaba, Lagos State',
     date: '2025-10-12',
     people_supported: 65,
-    image_url: '/outreach-1.svg',
+    image_url: '/outreach-banner-1.jpg',
   },
   {
     id: '2',

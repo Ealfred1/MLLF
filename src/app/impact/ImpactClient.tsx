@@ -144,10 +144,6 @@ export default function ImpactClient() {
             </p>
           </div>
         </div>
-        <div className="scroll-hint">
-          <span>scroll</span>
-          <span className="l"></span>
-        </div>
       </header>
 
       <section className="light-field">
@@ -185,7 +181,7 @@ export default function ImpactClient() {
 
           <div className="story reveal">
             <RippleImage
-              src="/kidssss.svg"
+              src="/outreach-crowd.jpg"
               alt="Story 01 Outreach"
               className="story-media"
             >
@@ -211,7 +207,7 @@ export default function ImpactClient() {
 
           <div className="story reveal">
             <RippleImage
-              src="/outreach-1.svg"
+              src="/outreach-banner-1.jpg"
               alt="Story 02 Outreach"
               className="story-media"
             >
@@ -236,7 +232,7 @@ export default function ImpactClient() {
 
           <div className="story reveal">
             <RippleImage
-              src="/kids.svg"
+              src="/outreach-canopy.jpg"
               alt="Story 03 Outreach"
               className="story-media"
             >
@@ -260,7 +256,7 @@ export default function ImpactClient() {
 
           <div className="story reveal">
             <RippleImage
-              src="/kidssss.svg"
+              src="/outreach-arrival.jpg"
               alt="Story 04 Outreach"
               className="story-media"
             >
