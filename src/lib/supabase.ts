@@ -31,12 +31,12 @@ export interface Volunteer {
 export interface Donation {
   id: string;
   created_at: string;
-  donor_name?: string;
-  email?: string;
+  donor_name: string;
+  email: string;
   amount: number;
-  payment_method: 'bank_transfer' | 'cheque';
+  payment_method: string;
   receipt_url?: string;
-  status: 'processing' | 'verified';
+  status: string;
 }
 
 // Initial mock outreaches database
@@ -193,31 +193,7 @@ class MockSupabaseClient {
           data: newRows,
           error: null,
         });
-      },
-
-      update: (values: any) => ({
-        eq: (column: string, value: any) => {
-          const apply = (rows: any[]) =>
-            rows.map((row) => (row[column] === value ? { ...row, ...values } : row));
-
-          let updated: any[] = [];
-          if (table === 'outreaches') {
-            updated = apply(this.getOutreaches());
-            this.saveOutreaches(updated);
-          } else if (table === 'volunteers') {
-            updated = apply(this.getVolunteers());
-            this.saveVolunteers(updated);
-          } else if (table === 'donations') {
-            updated = apply(this.getDonations());
-            this.saveDonations(updated);
-          }
-
-          return Promise.resolve({
-            data: updated.filter((row) => row[column] === value),
-            error: null,
-          });
-        },
-      }),
+      }
     };
   }
 }
@@ -227,69 +203,3 @@ export const supabase = isRealSupabase
   ? createClient(supabaseUrl, supabaseAnonKey)
   : (new MockSupabaseClient() as any);
 export default supabase;
-
-// Campaign totals for the two-stage tracker. Real mode reads the aggregated
-// donation_totals view (raw rows stay admin-only); mock mode sums local rows.
-export async function fetchDonationTotals(): Promise<{ processing: number; verified: number }> {
-  if (isRealSupabase) {
-    const { data, error } = await supabase
-      .from('donation_totals')
-      .select('*')
-      .single();
-    if (error || !data) return { processing: 0, verified: 0 };
-    return {
-      processing: Number(data.total_pledged_processing || 0),
-      verified: Number(data.total_cleared_verified || 0),
-    };
-  }
-
-  const { data } = await supabase.from('donations').select('*');
-  const rows: Donation[] = data || [];
-  const sum = (status: Donation['status']) =>
-    rows.filter((d) => d.status === status).reduce((acc, d) => acc + Number(d.amount || 0), 0);
-  return { processing: sum('processing'), verified: sum('verified') };
-}
-
-// Downscale a receipt screenshot so uploads stay small (and localStorage
-// fallback stays under quota in mock mode).
-const downscaleImage = (file: File): Promise<string> =>
-  new Promise((resolve, reject) => {
-    if (!file.type.startsWith('image/')) {
-      reject(new Error('Please upload an image (screenshot or photo) of your receipt.'));
-      return;
-    }
-    const url = URL.createObjectURL(file);
-    const img = new Image();
-    img.onload = () => {
-      URL.revokeObjectURL(url);
-      const max = 1280;
-      const scale = Math.min(1, max / Math.max(img.width, img.height));
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.round(img.width * scale);
-      canvas.height = Math.round(img.height * scale);
-      canvas.getContext('2d')!.drawImage(img, 0, 0, canvas.width, canvas.height);
-      resolve(canvas.toDataURL('image/jpeg', 0.82));
-    };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('Could not read that image. Please try another file.'));
-    };
-    img.src = url;
-  });
-
-// Store a receipt image and return a URL for it: Supabase Storage when
-// configured, otherwise an inline data URL for the localStorage mock.
-export async function uploadReceipt(file: File): Promise<string> {
-  const dataUrl = await downscaleImage(file);
-  if (!isRealSupabase) return dataUrl;
-
-  const path = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, '_')}.jpg`;
-  const blob = await (await fetch(dataUrl)).blob();
-  const { error } = await supabase.storage
-    .from('receipts')
-    .upload(path, blob, { contentType: 'image/jpeg' });
-  if (error) throw new Error(error.message);
-
-  const { data } = supabase.storage.from('receipts').getPublicUrl(path);
-  return data.publicUrl;
-}

@@ -49,7 +49,7 @@ export default function Footer() {
       </div>
       <div className="foot-bottom">
         <span>© 2026 Maryann's Love &amp; Light Foundation · Made with love.</span>
-        <span>Driven by kindness, not contracts.</span>
+        <span>Driven by kindness, not contracts. · CAC No. 7663513</span>
       </div>
     </footer>
   );
