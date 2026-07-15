@@ -141,32 +141,6 @@ img {
   }
 }
 
-.aperture {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 120px;
-  height: 120px;
-  margin: -60px 0 0 -60px;
-  border-radius: 50%;
-  z-index: 90;
-  pointer-events: none;
-  background: radial-gradient(circle at 40% 36%, var(--mint), var(--forest) 38%, var(--sea) 60%, var(--peacock) 88%);
-  box-shadow: 0 0 120px 30px rgba(34, 139, 34, .5);
-  transform: scale(0);
-  will-change: transform;
-}
-
-.aperture::after {
-  content: "✦";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: rgba(255, 255, 255, .7);
-  font-size: 34px;
-}
-
 nav {
   position: fixed;
   top: 0;

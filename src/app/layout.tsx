@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import CursorLight from "@/components/CursorLight";
-import PageTransition from "@/components/PageTransition";
 import Lightbox from "@/components/Lightbox";
 
 const poppins = Poppins({
@@ -53,7 +52,6 @@ export default function RootLayout({
       <body>
         <SmoothScroll>
           <CursorLight />
-          <PageTransition />
           <Header />
           {children}
           <Footer />
