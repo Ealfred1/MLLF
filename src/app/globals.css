@@ -147,10 +147,21 @@ nav {
   left: 0;
   right: 0;
   z-index: 50;
-  display: flex;
+  padding: 18px 0;
+  background: rgba(241, 246, 242, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(11, 31, 42, 0.08);
+}
+
+.nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px clamp(18px, 4vw, 52px);
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 clamp(18px, 4vw, 52px);
 }
 
 .brand {
@@ -158,6 +169,14 @@ nav {
   align-items: center;
   gap: 11px;
   cursor: none;
+  justify-self: start;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-self: end;
 }
 
 .brand .mark {
@@ -190,6 +209,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 6px;
+  justify-self: center;
 }
 
 .nav-links a {
@@ -216,6 +236,10 @@ nav {
 }
 
 .nav-cta {
+  position: relative;
+  font-family: var(--disp);
+  font-size: 14px;
+  border-radius: 100px;
   background: var(--grad) !important;
   color: #fff !important;
   font-weight: 600;
@@ -295,7 +319,7 @@ nav {
   transform: translateX(0);
 }
 
-.nav-drawer a {
+.nav-drawer a:not(.nav-cta) {
   font-family: var(--disp);
   font-weight: 600;
   font-size: 17px;
@@ -309,12 +333,43 @@ nav {
 }
 
 @media (max-width: 960px) {
-  .nav-links a:not(.nav-cta) {
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-links {
     display: none;
+  }
+
+  .nav-inner .nav-cta {
+    display: none !important;
   }
 
   .nav-burger {
     display: flex;
+  }
+
+  .nav-drawer .nav-cta {
+    margin-top: 20px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .actions {
+    flex-wrap: nowrap !important;
+  }
+  .actions .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 12px 14px;
+    font-size: 13px;
+    white-space: nowrap;
   }
 }
 
@@ -892,6 +947,10 @@ nav {
   gap: 18px;
 }
 
+.strip-head .btn {
+  margin-left: auto;
+}
+
 .strip-head h2 {
   font-size: clamp(28px, 4vw, 52px);
   line-height: 1.05;
@@ -1092,9 +1151,10 @@ nav {
 }
 
 .quote-card .ph {
+  aspect-ratio: 4/3;
   position: relative;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-image: var(--photo);
 }
 

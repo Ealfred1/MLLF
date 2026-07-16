@@ -7,6 +7,7 @@ interface RippleImageProps {
   alt: string;
   className?: string;
   children?: React.ReactNode;
+  objectPosition?: string;
 }
 
 const MAX_RIPPLES = 40;
@@ -32,6 +33,7 @@ uniform vec2 uImgRes;    // image natural size
 uniform float uTime;     // seconds
 uniform int uCount;      // active ripples
 uniform vec4 uRipples[${MAX_RIPPLES}]; // xy = uv pos, z = start time, w = strength
+uniform vec2 uObjectPosition;
 
 void main() {
   float aspect = uRes.x / uRes.y;
@@ -42,8 +44,8 @@ void main() {
     min((uRes.y / uRes.x) / (uImgRes.y / uImgRes.x), 1.0)
   );
   vec2 coverUv = vec2(
-    vUv.x * ratio.x + (1.0 - ratio.x) * 0.5,
-    vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
+    vUv.x * ratio.x + (1.0 - ratio.x) * uObjectPosition.x,
+    vUv.y * ratio.y + (1.0 - ratio.y) * uObjectPosition.y
   );
 
   float height = 0.0;
@@ -103,7 +105,7 @@ function createProgram(gl: WebGLRenderingContext): WebGLProgram | null {
   return prog;
 }
 
-export default function RippleImage({ src, alt, className, children }: RippleImageProps) {
+export default function RippleImage({ src, alt, className, children, objectPosition }: RippleImageProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [fallback, setFallback] = useState(false);
@@ -161,6 +163,49 @@ export default function RippleImage({ src, alt, className, children }: RippleIma
     const uTime = gl.getUniformLocation(program, "uTime");
     const uCount = gl.getUniformLocation(program, "uCount");
     const uRipples = gl.getUniformLocation(program, "uRipples");
+    const uObjectPosition = gl.getUniformLocation(program, "uObjectPosition");
+
+    // Parse objectPosition
+    let alignX = 0.5;
+    let alignY = 0.5;
+    if (objectPosition) {
+      const parts = objectPosition.trim().split(/\s+/);
+      const mapX = (keyword: string) => {
+        if (keyword === "left") return 0.0;
+        if (keyword === "right") return 1.0;
+        if (keyword === "center") return 0.5;
+        if (keyword.endsWith("%")) return parseFloat(keyword) / 100;
+        return 0.5;
+      };
+      const mapY = (keyword: string) => {
+        if (keyword === "top") return 1.0;
+        if (keyword === "bottom") return 0.0;
+        if (keyword === "center") return 0.5;
+        if (keyword.endsWith("%")) return 1.0 - parseFloat(keyword) / 100;
+        return 0.5;
+      };
+
+      if (parts.length === 1) {
+        const p = parts[0];
+        if (p === "top" || p === "bottom") {
+          alignY = mapY(p);
+        } else if (p === "left" || p === "right") {
+          alignX = mapX(p);
+        } else if (p.endsWith("%")) {
+          alignX = parseFloat(p) / 100;
+        }
+      } else if (parts.length === 2) {
+        const px = parts[0];
+        const py = parts[1];
+        if (px === "top" || px === "bottom" || py === "left" || py === "right") {
+          alignX = mapX(py);
+          alignY = mapY(px);
+        } else {
+          alignX = mapX(px);
+          alignY = mapY(py);
+        }
+      }
+    }
 
     const texture = gl.createTexture();
     gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -225,6 +270,7 @@ export default function RippleImage({ src, alt, className, children }: RippleIma
       gl.uniform1f(uTime, t);
       gl.uniform1i(uCount, count);
       gl.uniform4fv(uRipples, ripples);
+      gl.uniform2f(uObjectPosition, alignX, alignY);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     };
 
@@ -291,7 +337,6 @@ export default function RippleImage({ src, alt, className, children }: RippleIma
 
     const img = new Image();
     img.decoding = "async";
-    img.src = src;
     img.onload = () => {
       imgW = img.naturalWidth || 1;
       imgH = img.naturalHeight || 1;
@@ -310,6 +355,7 @@ export default function RippleImage({ src, alt, className, children }: RippleIma
       render(); // initial still frame
     };
     img.onerror = () => setFallback(true);
+    img.src = src;
 
     const ro = new ResizeObserver(resize);
     ro.observe(wrap);
@@ -333,13 +379,13 @@ export default function RippleImage({ src, alt, className, children }: RippleIma
       const lose = gl.getExtension("WEBGL_lose_context");
       lose?.loseContext();
     };
-  }, [src]);
+  }, [src, objectPosition]);
 
   if (fallback) {
     return (
-      <div className={className} style={{ position: "relative" }}>
+      <div className={className} style={{ position: "absolute", inset: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src={src} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: objectPosition || "center" }} />
         {children}
       </div>
     );

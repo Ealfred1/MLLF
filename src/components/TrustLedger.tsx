@@ -34,12 +34,7 @@ export default function TrustLedger() {
               </div>
               <div className="v">Every one</div>
             </div>
-            <div className="row">
-              <div className="k">
-                <span className="ic">◴</span> Independent verification
-              </div>
-              <div className="v warn">Pending</div>
-            </div>
+
           </div>
         </div>
       </div>

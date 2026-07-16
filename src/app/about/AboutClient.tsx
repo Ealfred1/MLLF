@@ -144,6 +144,7 @@ export default function AboutClient() {
                 src="/founder.jpg"
                 alt="Founder portrait"
                 className="ph"
+                objectPosition="center top"
               />
               <div className="body">
                 <blockquote>

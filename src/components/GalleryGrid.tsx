@@ -20,11 +20,11 @@ const TILES: Tile[] = [
   { id: 5, img: "/supplies-flatlay.jpg", paddingBottom: "178%", cap: "Packing the provisions", sub: "Before every outreach" },
   { id: 6, img: "/outreach-canopy.jpg", paddingBottom: "56%", cap: "Sharing a moment together", sub: "Community outreach" },
   { id: 7, img: "/orphanage-sign.jpg", paddingBottom: "178%", cap: "Registered & recognised", sub: "Compassionate Orphanage · Lagos" },
-  { id: 8, img: "/car-provisions.jpg", paddingBottom: "178%", cap: "Loaded up and ready", sub: "Supply run" },
+  { id: 8, img: "/car-provisions.jpg", paddingBottom: "56%", cap: "Loaded up and ready", sub: "Supply run" },
   { id: 9, img: "/outreach-crowd.jpg", paddingBottom: "56%", cap: "Faces we remember", sub: "Community visit" },
   { id: 10, img: "/indoor-handoff.jpg", paddingBottom: "178%", cap: "One box at a time", sub: "Distribution day" },
-  { id: 11, img: "/outreach-banner-2.jpg", paddingBottom: "56%", cap: "Every visit, documented", sub: "Faith Community Children's Home" },
-  { id: 12, img: "/courtyard-kids.jpg", paddingBottom: "178%", cap: "A day to celebrate", sub: "Community visit" },
+  { id: 11, img: "/outreach-banner-2.jpg", paddingBottom: "178%", cap: "Every visit, documented", sub: "Faith Community Children's Home" },
+  { id: 12, img: "/courtyard-kids.jpg", paddingBottom: "56%", cap: "A day to celebrate", sub: "Community visit" },
 ];
 
 export default function GalleryGrid() {
